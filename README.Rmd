@@ -1,0 +1,159 @@
+---
+title: README
+subtitle: 3PodR
+author: William G. Ryan V
+output:
+  github_document:
+    html_preview: false
+    toc: true
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+<!-- badges: start -->
+[![R Markdown](https://img.shields.io/badge/RMarkdown-Analysis-blue.svg)](https://rmarkdown.rstudio.com/)
+<!-- badges: end -->
+
+# Introduction
+
+3PodR is an R bookdown site for performing comprehensive differential gene expression analysis. 
+
+This template processes differential gene expression data from transcriptomic studies and generates several key outputs, including Gene Set Enrichment Analysis (GSEA), Over-representation Analysis (ORA) and drug prediction analysis (iLINCS).
+
+# Installation & Usage
+
+Follow these step-by-step instructions to install and run 3PodR:
+
+## Clone the Repository
+
+Open a terminal and execute:
+
+```bash
+git clone https://github.com/willgryan/3PodR_bookdown.git
+```
+
+## Open the Project
+
+Change into the repository directory:
+
+```bash
+cd 3PodR_bookdown
+```
+
+Alternatively, open `3PodR_bookdown.Rproj` in [RStudio](https://posit.co/download/rstudio-desktop/).
+
+## Restore the Environment
+
+In R, run:
+
+```r
+renv::restore()
+```
+
+This command ensures that all required packages are installed.
+
+## Prepare Your Input Data
+
+3PodR takes one or more CSV files containing the results of testing for differential gene expression. 
+
+Each file must contain the first three columns in the following order.
+
+**CSV Format Requirements:**  
+
+- **Column 1:** Gene Symbols (character vector)
+- **Column 2:** Log2 Fold Change (numeric vector)
+- **Column 3:** Unadjusted P-values (numeric vector)
+   
+> **Important:** Gene symbols must conform to the annotation standard for the species used (HGNC for human, RGD for rat, or MGI for mouse). Non-standard IDs (e.g., Ensembl or Entrez) will cause errors.
+
+**Place Your CSV File:**  
+
+Copy your differential gene expression CSV file into the `extdata/` folder (e.g., `extdata/YOUR_DGE_FILE.csv`).
+   
+**Optional: Sample Metadata and Gene Counts**  
+If you have sample metadata (e.g., group information) and gene counts, place them in the `extdata/` folder.
+
+
+Sample metadata should be in a CSV file named `design.csv`. The file should contain the following columns:
+
+**CSV Format Requirements:**  
+
+- **Column 1:** Sample (character vector)
+- **Column 2:** Group (character vector)
+ 
+Gene counts in log units should be in a CSV file named `counts.csv.` The file should contain the following columns:
+
+**CSV Format Requirements:**  
+
+- **Column 1:** Gene Symbols (character vector)
+- **Column 2-N:** Sample Names (numeric vector)
+   
+> **Important:** Ensure that the gene symbols in the `design.csv` and `counts.csv` files match those in the differential gene expression file. The sample names in the `design.csv` file must match those in the counts.csv columns. The group names in the `design.csv` file must match those in the report configuration file detailed below.
+
+## Configure the Analysis
+
+Edit the `extdata/configuration.yml` file as follows:
+
+**Species**
+
+- By default, the species is set to human. To use rat or mouse data, set the `species` variable to the appropriate species (e.g., `species: human`, `species: rat`, or `species: mouse`). You must also update the species indicated in the gmt file name by changing Human to Rat or Mouse 
+
+> **Important:** Ensure that the species in the configuration file is lowercase. However, you must use the species name in the gmt file name with the first letter capitalized (e.g., `Human`, `Rat`, or `Mouse`).
+
+**For Count and Expression Data:**  
+
+- If you are not using count data, you **must** comment out lines related to `design.csv` and `counts.csv` to not cause errors.
+
+**File Name Update:**  
+
+- Change the `file` variable (default is `file: DAvsCA.csv` or `file: DBvsCB.csv`) to match your CSV file (e.g., `file: YOUR_INPUT_FILE.csv`).
+
+## Render the Report
+
+Generate the report by running in R:
+
+```r
+rmarkdown::render_site(encoding = 'UTF-8')
+```
+
+Alternatively, in RStudio, click the **Build Book** or **Build Website** button (a wrench) in the Build pane, typically in the top right of the window.
+
+# Troubleshooting
+
+If you encounter any issues, follow these troubleshooting steps:
+
+## Verify Installation
+
+- Run the example files provided in the `extdata/` folder.
+- Ensure all dependencies specified in the `renv.lock` file are installed.
+
+## Verify Species
+
+- Confirm that the species in the configuration file matches the species in the gmt file name.
+- Ensure that the species in the configuration file is lowercase and the species in the gmt file name is capitalized.
+
+## Validate Input File Formats
+
+- Confirm your differential gene expression CSV files are formatted correctly shown above.
+- If you are using count and expression data, ensure the `design.csv` and `counts.csv` files are correctly formatted as shown above.
+
+## Check Gene Annotation
+
+- Make sure gene symbols are in the proper format (HGNC for human, RGD for rat, or MGI for mouse).  
+- Incorrect gene identifier formats (e.g., Ensembl or Entrez IDs) will lead to errors.
+
+## Review Configuration
+
+- Verify that the `extdata/configuration.yml` file is correctly set up, including file names and group names if using count data.
+- You can refer to the example datasets provided in the `extdata/` folder for guidance on formatting.
+
+For additional help, open an issue for support.
+
+Happy 3PodR'ing!

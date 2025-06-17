@@ -1,0 +1,116 @@
+# Background
+
+Here we describe a hypothetical transcriptomic study as an introduction and explanation to the analysis steps we will perform. This study aims to identify differentially expressed genes (DEGs) in lung adenocarcinoma and understand the biological pathways affected by these gene expression changes.
+
+## Introduction
+
+Imagine we are investigating a specific type of **cancer** (e.g., **lung adenocarcinoma**) to understand what molecular changes drive the disease. Our goal is to compare **gene expression profiles** between **tumor samples** from cancer patients (**case group**) and matched **non-cancerous control samples** (either normal adjacent tissue or healthy lung tissue). By identifying **genes that are differentially expressed**, we can learn:
+
+1. **Which biological pathways are disrupted in cancer** (to understand the disease mechanism).
+2. **Which drugs might reverse these molecular changes** (to identify therapeutic candidates).
+
+To accomplish this, we will:
+
+1. **Identify differentially expressed genes (DEGs)** between tumors and controls.
+2. **Perform pathway enrichment analysis using two complementary approaches**:
+   - **GSEA (Gene Set Enrichment Analysis)** to detect **subtle but coordinated** gene expression changes in pathways.
+   - **ORA (Over-Representation Analysis) using Enrichr** to identify the **most strongly dysregulated pathways** based on predefined thresholds.
+3. **Use iLINCS (Integrative Library of Network-Based Cellular Signatures)** to find drugs that could **reverse** the cancer expression signature.
+
+Each of these steps provides a different layer of biological insight, building towards a **systems-level understanding of cancer**.
+
+## Step 1: Differential Gene Expression Analysis
+Before we can analyze biological pathways, we need to **identify which genes are differentially expressed in cancer versus control samples**.
+
+### How is Differential Expression (DE) Determined?
+We analyze RNA-seq data using a standard **differential expression analysis tool** like **DESeq2** (for bulk RNA-seq). The software **compares the expression levels of each gene** between cancer and control samples while correcting for factors like sequencing depth.
+
+- **The output** is a table of genes ranked by how differently they are expressed between the two groups.
+- A gene is considered **differentially expressed (DEG)** if its **False Discovery Rate (FDR) ≤ 0.05**.
+
+At this stage, we have two sets of genes:
+
+- **Upregulated genes** (more highly expressed in cancer compared to controls).
+- **Downregulated genes** (less expressed in cancer compared to controls).
+
+Now that we have DEGs, the next step is to interpret **which biological processes they affect**.
+
+## Step 2: Pathway Analysis to Interpret Biological Meaning
+Pathway analysis helps us move from **lists of individual genes** to understanding **coordinated functional changes** in cells.  We use two **complementary** approaches:
+
+### Gene Set Enrichment Analysis (GSEA)
+**Purpose:** GSEA determines if **entire pathways** (sets of functionally related genes) are **coordinately up- or downregulated**, even if individual genes within the pathway are **not strongly differentially expressed**.
+
+#### **How it works:**
+- Instead of using a **threshold to select DEGs**, GSEA ranks **all genes** based on their differential expression.
+- It then tests whether genes from a given pathway tend to be **enriched at the top (upregulated) or bottom (downregulated)** of the ranked list.
+
+#### **Why is GSEA useful?**
+- It detects **subtle but coordinated changes in gene sets**, which might be missed by methods that require strict DE thresholds.
+- It can reveal pathways that are **biologically important even if no single gene in the pathway is highly significant**.
+
+#### **Example GSEA Results in Cancer vs. Control:**
+- **Cell Cycle Regulation Pathway**  
+  - **Normalized Enrichment Score (NES) = 2.3, FDR = 0.01**  
+  - **Interpretation:** Cell cycle-related genes are significantly **enriched among upregulated genes in cancer**, suggesting increased proliferation.
+  
+- **Apoptosis Pathway**  
+  - **NES = -1.9, FDR = 0.02**  
+  - **Interpretation:** Apoptosis-related genes are **enriched among downregulated genes in cancer**, indicating reduced programmed cell death.
+
+### **Over-Representation Analysis (ORA) with Enrichr (Gene Ontology)**
+**Purpose:** ORA tests whether specific biological pathways contain **more DEGs than expected by chance**.
+
+#### **How it works:**
+- Unlike GSEA, ORA requires us to first **select DEGs** using thresholds (e.g., FDR ≤ 0.05 and 90th percentile or 10th percentile by log2FoldChange).
+- It then checks if certain **biological processes** (from Gene Ontology or other databases) contain a **statistically significant number of DEGs**.
+
+#### **Why is ORA useful?**
+- ORA is **more effective at identifying pathways where genes show large changes**.
+- It provides a **"greatest hits" summary** of the most strongly dysregulated processes.
+
+#### **Example ORA Results (Gene Ontology - Biological Process)**
+- **"DNA Replication" (GO:0006260)**  
+  - **FDR = 0.005**  
+  - **Interpretation:** Cancer cells have excessive DNA replication, which is a hallmark of uncontrolled growth.
+
+- **"Response to Oxidative Stress" (GO:0006979)**  
+  - **FDR = 0.01**  
+  - **Interpretation:** Genes involved in oxidative stress protection are downregulated, potentially making cancer cells more vulnerable to oxidative damage.
+
+### **How GSEA and ORA Complement Each Other**
+| Feature | GSEA | ORA (Enrichr) |
+|---------|------|--------------|
+| **Input** | Uses **all** genes, ranked by expression | Uses **only DEGs**, based on threshold |
+| **Strengths** | Detects **subtle** coordinated changes | Identifies **strongest** hits in dysregulated pathways |
+| **Best For** | Understanding **gradual shifts in pathways** | Finding **specific biological processes** with major expression changes |
+
+By combining **both** methods, we get a more complete picture of the **molecular changes in cancer**.
+
+## Step 3: Identifying Potential Drugs with iLINCS
+Now that we understand the biological pathways affected by cancer, the next step is to **find drugs that might reverse these gene expression changes**. We use **iLINCS**, a database of **drug-induced gene expression profiles** from cell lines.
+
+### **How iLINCS Works**
+- We input our entire **list of DEGs** a.k.a. the **cancer signature**.
+- iLINCS compares this signature to its database of **thousands of drug treatments**.
+- It assigns a **connectivity score**:
+  - **Negative scores** indicate that a drug **reverses** the cancer signature (potential treatment).
+  - **Positive scores** indicate that a drug **mimics** the cancer expression pattern (potentially harmful).
+
+#### **Example iLINCS Results**
+- **Vorinostat (HDAC inhibitor)** → **Negative connectivity score (-0.85)**  
+  - **Interpretation:** Vorinostat reverses tumor gene expression, making it a promising candidate for treatment.
+  
+- **Dexamethasone (glucocorticoid)** → **Positive connectivity score (+0.75)**  
+  - **Interpretation:** Dexamethasone mimics cancer gene expression and could **worsen** the disease.
+
+By integrating pathway analysis and drug connectivity, we can **prioritize potential therapies**.
+
+## Conclusion: Translating Results into Biological Insights
+This study provides a **multi-layered** approach to understanding cancer:
+
+1. **Differential Expression Analysis** identifies **key genes** altered in cancer.
+2. **Pathway Analysis (GSEA & ORA)** reveals **biological processes disrupted** in tumors.
+3. **Drug Connectivity Analysis (iLINCS)** suggests **compounds that could target cancer’s molecular signature**.
+
+These methods **work together** to generate **biological insights** and guide **therapeutic development**.

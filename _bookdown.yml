@@ -1,0 +1,12 @@
+rmd_files: ["index.Rmd"]
+rmd_subdir: ["chapters"]
+
+book_filename: "3PodR.Rmd"
+
+delete_merged_file: true
+
+language:
+  ui:
+    chapter_name: "Chapter "
+
+output_dir: "results"

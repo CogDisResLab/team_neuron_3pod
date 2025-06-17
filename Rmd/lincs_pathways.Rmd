@@ -1,0 +1,19 @@
+### `r .$name`
+
+A total of **`r sum(nrow(.$results$lincs$concordant_pathways), nrow(.$results$lincs$discordant_pathways))`** significantly altered pathways were identified in the concordant and discordant gene targets. Of which, we identified **`r nrow(.$results$lincs$concordant_pathways)`** up-regulated pathways & **`r nrow(.$results$lincs$discordant_pathways)`** down-regulated pathways.
+
+* Number of significantly identified pathways (padj <= 0.05): **`r sum(nrow(.$results$lincs$concordant_pathways), nrow(.$results$lincs$discordant_pathways))`**
+* Number of significantly concordant pathways: **`r nrow(.$results$lincs$concordant_pathways)`**
+* Number of significantly discordant pathways: **`r nrow(.$results$lincs$discordant_pathways)`**
+
+```{r}
+.$results$lincs$concordant_pathways %>% 
+  format_lincs_pathways() %>%
+  make_table(caption = paste(.$name, "Top Concordant Pathways")) %>% 
+  DT::formatStyle("Term","white-space"="nowrap")
+
+.$results$lincs$discordant_pathways %>%
+  format_lincs_pathways() %>%
+  make_table(caption = paste(.$name, "Bottom Discordant Pathways")) %>% 
+  DT::formatStyle("Term","white-space"="nowrap")
+```

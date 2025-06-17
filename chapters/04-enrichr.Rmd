@@ -1,0 +1,64 @@
+# Enrichr
+
+This is Enrichr.
+
+## Pathways
+
+These are Enrichr pathways.
+
+```{r enrichr-pathways, results='asis'}
+global_state$data <- purrr::map(global_state$data, function(x) {
+  Sys.sleep(5) # Enrichr API rate limit bug
+  x$bpn <- BioPathNet::do_enrichr_pod(
+    x$bpn,
+    useFDR = TRUE) %>% quiet()
+  x
+})
+
+global_state$data %>%
+  purrr::map(~ knitr::knit_child(
+    here::here("Rmd", "enrichr_pathways.Rmd"),
+    envir = environment(),
+    quiet = TRUE
+  )) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+```
+
+## PAVER
+
+These are PAVER plots of the pathways from all comparisons
+
+```{r enrichr-paver, results='asis'}
+enrichr_paver_input <- purrr::map_dfr(global_state$data, function(x) {
+  dplyr::bind_rows(
+    x$bpn@enrichr@sig_up_enrichr,
+    x$bpn@enrichr@sig_down_enrichr %>% dplyr::mutate(Combined.Score = Combined.Score * -1)
+  )
+}, .id = "Group") %>%
+  dplyr::select(GOID = Term, CS = Combined.Score, Group) %>%
+  dplyr::mutate(CS = sign(CS) * log2(abs(CS)) + 1,
+                GOID = stringr::str_extract(GOID, "\\bGO:\\d+")) %>%
+  dplyr::distinct(GOID, Group, .keep_all = T) %>%
+  tidyr::pivot_wider(names_from = Group, values_from = CS)
+
+minClusterSize = 5
+maxCoreScatter = 0.55
+minGap = (1 - maxCoreScatter) * 3 / 4
+
+ENRICHR_PAVER_result <- PAVER::prepare_data(enrichr_paver_input,
+                                            global_state$embeddings,
+                                            global_state$term2name) %>%
+  PAVER::generate_themes(
+    maxCoreScatter = maxCoreScatter,
+    minGap = minGap,
+    minClusterSize = minClusterSize)
+
+global_state$results <- append(global_state$results, dplyr::lst(ENRICHR_PAVER_result))
+
+list(ENRICHR_PAVER_result, "logCS") %>%
+  knitr::knit_child(text = readLines(here::here("Rmd", "paver_report.Rmd")),
+                    envir = environment(),
+                    quiet = TRUE) %>%
+  cat(sep = "\n")
+```

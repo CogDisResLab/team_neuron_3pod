@@ -1,0 +1,77 @@
+# Differentially Expressed Genes
+
+These are visualizations of the differentially expressed genes (DEGs).
+
+## Top DEGs
+
+These are the top 50 significantly (adjusted p-value <= 0.05) differentially expressed genes (DEGs) for each comparison determined by greatest absolute log2FoldChange.
+
+```{r degs-topdegs}
+
+# Pull list of named DEG tables from global state
+global_state$data %>%
+  purrr::map("data") %>%
+  combined_deg_heatmap(df = .)
+
+```
+
+## Volcano Plots
+
+These are volcano plots of the DEGs.
+
+```{r degs-volcanoplots, results="asis"}
+
+# Dynamically generate volcano plots for each data set
+
+global_state$data %>%
+  # Filter out entries where 'data' is NULL or an empty data frame
+  purrr::keep(~ !is.null(.$data) && (is.data.frame(.$data) && nrow(.$data) > 0)) %>%
+  purrr::map( ~ {
+    # Create a new environment for each child
+    child_env <- new.env(parent = environment()) 
+    child_env$current_data <- .$data # Assign the current data to a specific variable
+    child_env$current_name <- .$name # Assign the current name
+
+    knitr::knit_child(
+      text = c(
+        '',
+        '### `r current_name`', # Use the variable from the child environment
+        '',
+        '```{r}',
+        'volcano_plot(current_data)', # Use the variable from the child environment
+        '```',
+        ''
+      ),
+      envir = child_env, # Pass the specific child environment
+      quiet = TRUE 
+    )
+  }) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+```
+
+<!-- ## Expression of Top DEGs -->
+```{r degs-degexpression, results='asis'}
+# Dynamically generate heatmaps for each data set, if raw counts are included in the analysis
+
+if(global_state$using_counts) {
+  global_state$data %>%
+    map( ~ knitr::knit_child(
+      text = c(
+        '',
+        '### `r .$name`',
+        '',
+        '```{r}',
+        'group_count_heatmap(.)',
+        '```',
+        ''
+      ),
+      envir = environment(),
+      quiet = TRUE
+    )) %>%
+    c("\n\nThis is gene expression of the most upregulated (top 90%) and most downregulated (bottom 10%) significant genes (FDR adjusted p-value < 0.05) \n\n", .) %>%
+    c("\n\n## Expression of Top DEGs\n\n", .) %>%
+    purrr::list_c() %>%
+    cat(sep = "\n")
+}
+```

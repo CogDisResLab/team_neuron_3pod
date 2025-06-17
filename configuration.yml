@@ -1,0 +1,24 @@
+# For instructions on configuring the report see the README
+species: human # [human, rat, mouse]
+gmt: Human_GOALL_with_GO_iea_March_01_2025_symbol.gmt # [Human, Rat, Mouse]
+data:
+  - group1: Disease A
+    group2: Control A
+    file: DAvsCA.csv
+  - group1: Disease B
+    group2: Control B
+    file: DBvsCB.csv
+design: design.csv
+counts: counts.csv
+
+# Debugging
+save_environment: false # Save whole environment or just global state?
+
+# External assets - don't touch
+humanmap: HGNChelper_currentHumanMap_2025-03-01.csv
+hgnc: hgnc_complete_set_2025-03-01.csv
+rgd: GENES_RAT_2025-03-01.csv
+mgi: MRK_List2_2025-03-01.csv
+lincs_fda: LINCS_FDA_Phases_2023-05-05.csv
+embeddings: anc2vec_02_06_25_embeddings.rds
+term2name: anc2vec_02_06_25_term2name.rds

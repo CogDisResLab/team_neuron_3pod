@@ -1,0 +1,16 @@
+# Reproducibility
+
+This is useful reproducibility information for the report.
+
+```{r reproducibility}
+utils::sessionInfo()
+
+# Storage is cheap and these reports are already long enough as it is...
+if(global_state$save_environment) {
+  save.image(file = here::here("results", "report_environment.RData"), compress = FALSE)
+} else {
+  saveRDS(object = global_state, 
+        file = here::here("results", "global_state.RDS"), 
+        compress = FALSE) 
+}
+```

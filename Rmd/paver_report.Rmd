@@ -1,0 +1,28 @@
+### Theme Plot
+
+```{r}
+PAVER::PAVER_theme_plot(.[[1]])
+```
+
+### Regulation Plot
+
+```{r}
+PAVER::PAVER_regulation_plot(.[[1]]) +
+  ggprism::theme_prism(base_size = 9)
+```
+
+### Interpretation Plot
+
+```{r}
+x <- PAVER::PAVER_interpretation_plot(.[[1]])
+x$layers[[2]] <- NULL
+
+x <- x + ggrepel::geom_text_repel(size = 9 / ggplot2::.pt) 
+x + ggprism::theme_prism(base_size = 9)
+```
+
+### Heatmap Plot
+
+```{r}
+x <- quiet(PAVER::PAVER_hunter_plot(.[[1]], unit = .[[2]]))
+```

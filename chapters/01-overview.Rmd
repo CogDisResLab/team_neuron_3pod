@@ -1,0 +1,76 @@
+# Overview
+
+This is an overview of the transcriptomic data contained within the report.
+
+<!-- ## Experimental Design -->
+```{r overview_design, results='asis'}
+
+# Conditionally include the experimental design table if counts are used
+
+if(global_state$using_counts) {
+  global_state$design %>%
+    knitr::knit_child(
+      text = c('',
+               '```{r}',
+               'make_table(.)',
+               '```',
+               ''),
+      envir = environment(),
+      quiet = TRUE
+    ) %>%
+    c("\n\nThis is the experimental design.\n\n", .) %>%
+    c("\n\n## Experimental Design\n\n", .) %>%
+    cat(sep = "\n")
+}
+```
+
+<!-- ## Sample PCA -->
+```{r overview_pca, results='asis'}
+
+#Conditionally include PCA plot if counts are used
+
+if (global_state$using_counts) {
+  global_state %>%
+    knitr::knit_child(
+      text = c('',
+               '```{r}',
+               'pca_plot(.)',
+               '```',
+               ''),
+      envir = environment(),
+      quiet = TRUE) %>%
+    c("\n\nThis is the PCA of each sample.\n\n", .) %>%
+    c("\n\n## Sample PCA\n\n", .) %>%
+    cat(sep = "\n")
+}
+```
+
+<!-- ## Gene Expression Heatmap -->
+```{r overview_gex_heatmap, results='asis'}
+
+# Conditionally include gene expression heatmap if counts are used
+
+if (global_state$using_counts) {
+  global_state %>%
+    knitr::knit_child(
+      text = c('',
+               '```{r}',
+               'variable_genes_heatmap(.)',
+               '```',
+               ''),
+      envir = environment(),
+      quiet = TRUE
+    ) %>%
+    c("\n\nThis is the expression of the 500 most variable genes.\n\n", .) %>%
+    c("\n\n## Gene Expression Heatmap\n\n", .) %>%
+    cat(sep = "\n")
+}
+```
+
+## Comparisons
+
+These are experimental comparisons that were analyzed in the report.
+
+```{r overview_comparisons}
+make_table(tibble::tibble(Comparison = names(global_state$data)))
+```

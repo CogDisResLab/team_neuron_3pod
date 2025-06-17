@@ -1,0 +1,78 @@
+# GSEA
+
+This is GSEA.
+
+## Pathways
+
+These are GSEA pathways.
+
+```{r gsea-pathways, results='asis'}
+global_state$data <- purrr::map(global_state$data, function(x) {
+  x$bpn <- BioPathNet::do_gsea_pod(
+    x$bpn,
+    gmtfile = global_state$gmt,
+    rankWithSignificance = TRUE,
+    species = NULL,
+    useFDR = TRUE
+  )
+  x
+})
+  
+global_state$data %>%
+  map( ~ knitr::knit_child(
+    here::here("Rmd", "gsea_pathways.Rmd"),
+    envir = environment(),
+    quiet = TRUE
+  )) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+``` 
+
+## Leading Edge
+
+These are leading edge genes.
+
+```{r gsea-leadingedge, results='asis'}
+global_state$data <- purrr::map(global_state$data, function(x) {
+  x$bpn <- BioPathNet::do_leading_pod(x$bpn)
+  x
+})
+
+global_state$data %>%
+  map( ~ knitr::knit_child(here::here("Rmd/gsea_le.Rmd"), envir = environment(), quiet = TRUE)) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+``` 
+
+## PAVER
+
+These are PAVER plots of the pathways from all comparisons
+
+```{r gsea-paver, results='asis'}
+gsea_paver_input <- purrr::map_dfr(global_state$data, function(x) {
+  dplyr::bind_rows(x$bpn@gsea@sig_pos_enriched, x$bpn@gsea@sig_neg_enriched)}, .id = "Group") %>%
+  dplyr::select(GOID = pathway, NES, Group) %>%
+  dplyr::mutate(GOID = stringr::word(GOID, -1, sep = "%")) %>%
+  dplyr::distinct(GOID, Group, .keep_all = TRUE) %>% # TODO: pre-filter duplicates in GMT? Pathway IDs should be unique.
+  tidyr::pivot_wider(names_from = Group, values_from = NES)
+
+minClusterSize = 5
+maxCoreScatter = 0.4
+minGap = (1 - maxCoreScatter) * 3 / 4
+
+GSEA_PAVER_result <- PAVER::prepare_data(gsea_paver_input, 
+                                         global_state$embeddings, 
+                                         global_state$term2name) %>%
+  PAVER::generate_themes(
+    maxCoreScatter = maxCoreScatter,
+    minGap = minGap,
+    minClusterSize = minClusterSize)
+
+global_state$results <- append(global_state$results, dplyr::lst(GSEA_PAVER_result))
+
+list(GSEA_PAVER_result, "NES") %>%
+  knitr::knit_child(text = readLines(here::here("Rmd", "paver_report.Rmd")),
+                    envir = environment(),
+                    quiet = TRUE) %>%
+  cat(sep = "\n")
+```

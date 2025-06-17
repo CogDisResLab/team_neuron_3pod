@@ -1,0 +1,9 @@
+### `r .$name`
+
+```{r}
+format_le_genes(.$bpn@leading@count_leading_up, .$data) %>%
+  make_table(caption = paste(.$name, "Top Leading Edge Genes"))
+
+format_le_genes(.$bpn@leading@count_leading_down, .$data) %>%
+  make_table(caption = paste(.$name, "Bottom Leading Edge Genes"))
+```

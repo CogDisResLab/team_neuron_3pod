@@ -1,0 +1,15 @@
+### `r .$name`
+
+We identified **`r nrow(.$results$lincs$concordant)`** L1000 signatures positively correlated and **`r nrow(.$results$lincs$discordant)`** L1000 signatures negatively correlated to the gene signature.
+
+```{r}
+
+format_ilincs_results(.$results$lincs$concordant) %>%
+  make_table(caption = paste(.$name, "Concordant Signatures")) %>%
+  DT::formatStyle(c("MOA", "GeneTargets", "Perturbagen"), "white-space" = "nowrap")
+
+format_ilincs_results(.$results$lincs$discordant) %>%
+  make_table(caption = paste(.$name,"Discordant Signatures")) %>%
+  DT::formatStyle(c("MOA", "GeneTargets", "Perturbagen"), "white-space" = "nowrap")
+
+```

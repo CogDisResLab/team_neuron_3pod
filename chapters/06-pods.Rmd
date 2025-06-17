@@ -1,0 +1,200 @@
+# Pods
+
+These are all possible overlaps of pathways across all possible comparisons.
+
+```{r pods-upset}
+upset_plot = global_state$results %>%
+  purrr::map_dfr("prepared_data", .id = "Pod") %>%
+  dplyr::mutate(Pod = stringr::word(Pod, sep =  "_"),
+                Group = stringr::str_remove(Group, "-C|-D"),
+                ID = paste0(Group, "_", Pod)) %>%
+  dplyr::select(ID, GOID) %>%
+  dplyr::group_by(GOID) %>%
+  dplyr::summarise(ID = list(ID)) %>%
+  dplyr::filter(!stringr::str_detect(ID, "LINCS") | stringr::str_detect(ID, "GSEA|Enrichr")) %>% 
+  ggplot2::ggplot(aes(x = ID)) +
+  ggplot2::geom_bar() +
+  ggprism::theme_prism(base_size = 9) + 
+  ggupset::scale_x_upset() +
+  labs(x = NULL, y = "Pathways")
+
+upset_plot
+
+```
+
+## 2nd Pod
+
+These are overlaps between each datasets GSEA and EnrichR results
+
+```{r pods-2pod, results='asis'}
+
+# Generate venn diagrams of each comparison's overlap in GSEA and enrichR results
+# TODO: this could be cleaner
+twopod_plots = global_state$results %>%
+  purrr::map_dfr("prepared_data", .id = "Pod") %>%
+  dplyr::mutate(Pod = stringr::word(Pod, sep =  "_")) %>%
+  dplyr::filter(Pod != "LINCS") %>%
+  dplyr::group_by(Group, Pod) %>%
+  dplyr::summarise(GOID = list(GOID)) %>%
+  dplyr::group_by(Group) %>%
+  tidyr::nest() %>%
+  with(stats::setNames(purrr::map(data, tibble::deframe), Group)) %>% # whew
+  purrr:::map(~ ggVennDiagram::ggVennDiagram(.)) %>% 
+  .[order(names(.))]
+
+twopod_data = global_state$results %>%
+  purrr::map_dfr("prepared_data", .id = "Pod") %>%
+  dplyr::mutate(Pod = stringr::word(Pod, sep =  "_")) %>%
+  dplyr::filter(Pod != "LINCS") %>%
+  dplyr::mutate(value = ifelse(Pod == "ENRICHR", sign(value) * 2^(abs(value)-1), value)) %>% # Reconstruct combined score from logCS
+  dplyr::mutate(Pod = stringr::str_replace(Pod, "ENRICHR", "Enrichr")) %>%
+  dplyr::group_by(Group) %>%
+  tidyr::nest() %>%
+  tibble::deframe() %>%
+  purrr::map(function(x){
+    
+    top10 = x %>%
+      dplyr::filter(sign(value) == 1) %>%
+      dplyr::group_by(GOID) %>%
+      dplyr::filter(dplyr::n() > 1) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(GOID, Pod, value) %>%
+      tidyr::pivot_wider(names_from = "Pod", values_from = "value") %>%
+      dplyr::arrange(!!!purrr::map(dplyr::select(., dplyr::where(is.numeric)), ~ dplyr::desc(.x))) %>% # Sort numeric columns in descending order of appearance
+      dplyr::inner_join(global_state$term2name) %>%
+      dplyr::relocate(Term, .after = GOID)
+    
+    bot10 = x %>%
+      dplyr::filter(sign(value) == -1) %>%
+      dplyr::group_by(GOID) %>%
+      dplyr::filter(dplyr::n() > 1) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(GOID, Pod, value) %>%
+      tidyr::pivot_wider(names_from = "Pod", values_from = "value") %>%
+      dplyr::arrange(!!!purrr::map(dplyr::select(., dplyr::where(is.numeric)), ~ (.x))) %>% # Sort numeric columns in ascending order of appearance
+      dplyr::inner_join(global_state$term2name) %>%
+      dplyr::relocate(Term, .after = GOID)
+
+    dplyr::lst(`Top 10` = top10, `Bottom 10` = bot10)
+      
+  }) %>% .[order(names(.))]
+
+global_state$results <- append(global_state$results, dplyr::lst(`twopod_data` = twopod_data))
+
+list(names(twopod_plots) %>% as.list(), 
+     twopod_plots, 
+     twopod_data) %>%
+  purrr::pmap(~ knitr::knit_child(
+    text = c(
+      '',
+      '### `r ..1`',
+      '',
+      '```{r}',
+      'print(..2)',
+      'make_table(..3[[1]], caption = \'Shared Upregulated Pathways\')',
+      'make_table(..3[[2]], caption = \'Shared Downregulated Pathways\')',
+      '```',
+      ''
+    ), envir = environment(), quiet = TRUE)) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+```
+
+## 3rd Pod
+
+These are overlaps between each datasets GSEA and EnrichR and LINCS results
+
+```{r pods-3pod, results='asis'}
+threepod_plots = global_state$results %>%
+  purrr::map_dfr("prepared_data", .id = "Pod") %>%
+  dplyr::mutate(Pod = stringr::word(Pod, sep =  "_"),
+                Group = stringr::str_remove(Group, "-C|-D")) %>%
+  dplyr::group_by(Group, Pod) %>%
+  dplyr::summarise(GOID = list(GOID)) %>%
+  dplyr::group_by(Group) %>%
+  tidyr::nest() %>%
+  with(stats::setNames(purrr::map(data, tibble::deframe), Group)) %>% # whew
+  purrr:::map(~ ggVennDiagram::ggVennDiagram(.)) %>% 
+  .[order(names(.))]
+
+threepod_data = global_state$results %>%
+  purrr::map_dfr("prepared_data", .id = "Pod") %>%
+  dplyr::mutate(Pod = stringr::word(Pod, sep =  "_"),
+                Group = stringr::str_remove(Group, "-C|-D")) %>%
+  dplyr::mutate(value = ifelse(Pod == "ENRICHR" | Pod == "LINCS", sign(value) * 2^(abs(value)-1), value)) %>% # Reconstruct combined score from logCS
+  dplyr::mutate(Pod = stringr::str_replace(Pod, "ENRICHR", "Enrichr")) %>%
+  dplyr::group_by(Group) %>%
+  tidyr::nest() %>%
+  tibble::deframe() %>%
+  purrr::map(function(x){
+    
+    top10 = x %>%
+      dplyr::filter(sign(value) == 1) %>%
+      dplyr::group_by(GOID) %>%
+      dplyr::filter(dplyr::n() > 2) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(GOID, Pod, value) %>%
+      tidyr::pivot_wider(names_from = "Pod", values_from = "value") %>%
+      dplyr::arrange(!!!purrr::map(dplyr::select(., dplyr::where(is.numeric)), ~ dplyr::desc(.x))) %>% # Sort numeric columns in descending order of appearance
+      dplyr::inner_join(global_state$term2name) %>%
+      dplyr::relocate(Term, .after = GOID)
+    
+    bot10 = x %>%
+      dplyr::filter(sign(value) == -1) %>%
+      dplyr::group_by(GOID) %>%
+      dplyr::filter(dplyr::n() > 2) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(GOID, Pod, value) %>%
+      tidyr::pivot_wider(names_from = "Pod", values_from = "value") %>%
+      dplyr::arrange(!!!purrr::map(dplyr::select(., dplyr::where(is.numeric)), ~ (.x))) %>% # Sort numeric columns in ascending order of appearance
+      dplyr::inner_join(global_state$term2name) %>%
+      dplyr::relocate(Term, .after = GOID)
+
+    dplyr::lst(`Top 10` = top10, `Bottom 10` = bot10)
+      
+  }) %>% .[order(names(.))]
+
+fourpod_data <- threepod_data %>% 
+  purrr::map(dplyr::bind_rows) %>%
+  purrr::reduce(dplyr::inner_join, by = "Term") %>%
+  dplyr::select(GOID = dplyr::first(dplyr::contains("GOID")), Term)
+
+global_state$results <- append(global_state$results, dplyr::lst(`threepod_data` = threepod_data, fourpod_data))
+
+list(names(threepod_plots) %>% as.list(), 
+     threepod_plots, 
+     threepod_data) %>%
+  purrr::pmap(~ knitr::knit_child(
+    text = c(
+      '',
+      '### `r ..1`',
+      '',
+      '```{r}',
+      'print(..2)',
+      'make_table(..3[[1]], caption = \'Shared Upregulated Pathways\')',
+      'make_table(..3[[2]], caption = \'Shared Downregulated Pathways\')',
+      '```',
+      ''
+    ), envir = environment(), quiet = TRUE)) %>%
+  purrr::list_c() %>%
+  cat(sep = "\n")
+```
+
+<!-- ## 4th Pod -->
+```{r pods-4pod, results='asis'}
+if(nrow(global_state$results$fourpod_data) > 0) {
+  global_state$results$fourpod_data %>%
+    knitr::knit_child(
+    text = c(
+      '',
+      '## 4th Pod',
+      '',
+      'These are the overlaps between each 3 datasets 3rd pod.',
+      '',
+      '```{r}',
+      'make_table(.)',
+      '```',
+      ''), envir = environment(), quiet = TRUE) %>%
+    cat(sep = "\n")
+}
+```

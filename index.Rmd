@@ -1,0 +1,16 @@
+--- 
+title: "A 3 Pod Report"
+author: "WGRV"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+# About 
+
+This is a 3 Pod Report.
+
+```{r index-3PodR, include=FALSE}
+# Initialize the 3PodR environment
+
+source(here::here("3PodR.R"), local = knitr::knit_global())
+```
