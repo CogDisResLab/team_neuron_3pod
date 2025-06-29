@@ -61,11 +61,11 @@ fit2 <- eBayes(fit2, 0.01)
 tT <- topTable(fit2, adjust = "fdr", sort.by = "B", number = Inf)
 
 tT <- subset(tT, select = c("ID", "adj.P.Val", "P.Value", "t", "logFC", "GENE", "GENE_SYMBOL"))
-write.table(tT, file = file.path("extdata", "pngf_3m-3m.csv"), row.names = FALSE, sep = ",")
+write.table(tT, file = file.path("extdata", "pngf_3m-12m.csv"), row.names = FALSE, sep = ",")
 
 writable <- subset(tT, select = c("GENE_SYMBOL", "logFC", "P.Value"))
 writable <- writable[writable[["GENE_SYMBOL"]] != "", ]
 names(writable) <- c("gene_name", "logFC", "P.Value")
 writable <- writable[order(writable$gene_name, -writable$logFC), ]
 writable <- writable[!duplicated(writable$gene_name), ]
-write.table(writable, file = file.path("extdata", "pngf_3m-3m_clean.csv"), row.names = FALSE, sep = ",")
+write.table(writable, file = file.path("extdata", "pngf_3m-12m_clean.csv"), row.names = FALSE, sep = ",")

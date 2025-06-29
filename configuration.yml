@@ -5,24 +5,23 @@ gmt: Mouse_GOALL_with_GO_iea_March_01_2025_symbol.gmt
 data:
   - group1: 1 month WT
     group2: 3 month WT
-    file: deg_clean_wt_1-3month.csv
+    file: wt_1m-3m_clean.csv
   - group1: 1 month ProNGF
     group2: 3 month ProNGF
-    file: deg_clean_pngf_1-3month.csv
+    file: pngf_1m-3m_clean.csv
   - group1: 3 month WT
     group2: 12 month WT
-    file: deg_clean_wt_1-3month.csv
+    file: wt_3m-12m_clean.csv
   - group1: 3 month ProNGF
     group2: 12 month ProNGF
-    file: deg_clean_pngf_1-3month.csv
+    file: pngf_3m-12m_clean.csv
   - group1: 1 month WT
     group2: 12 month WT
-    file: deg_clean_wt_1-3month.csv
+    file: wt_1m-12m_clean.csv
   - group1: 1 month ProNGF
     group2: 12 month ProNGF
-    file: deg_clean_pngf_1-3month.csv
+    file: pngf_1m-12m_clean.csv
 design: design.csv
-counts: counts.csv
 
 # Debugging
 save_environment: true # Save whole environment or just global state?
