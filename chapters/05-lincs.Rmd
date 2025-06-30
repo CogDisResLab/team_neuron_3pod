@@ -14,16 +14,30 @@ global_state$data <- global_state$data %>%
     signature <- x$data
     
     # If we don't have human datam, convert mouse or rat genes to human orthologs for iLINCS
-    if(global_state$species != "human") { 
-      orthologs <- babelgene::orthologs(genes = signature$Symbol, 
+    if(global_state$species != "human") {
+      org.db = switch (global_state$species,,
+        "mouse" = org.Mm.eg.db::org.Mm.eg.db,
+        "rat" = org.Rn.eg.db::org.Rn.eg.db
+      )
+      
+      remapped_genes <- AnnotationDbi::select(org.db, 
+        keys = signature$Symbol, 
+        columns = c("SYMBOL", "ALIAS"), 
+        keytype = "ALIAS") %>%
+        dplyr::rename(Original_Symbol = ALIAS, MGI_Symbol = SYMBOL)
+      
+      
+      orthologs <- babelgene::orthologs(genes = remapped_genes$MGI_Symbol, 
                                         human = FALSE, 
                                         species = global_state$species) %>%
-        dplyr::select(Symbol = human_symbol, Symbol_old = symbol)
+        dplyr::select(HGNC_Symbol = human_symbol, MGI_Symbol = symbol) %>%
+        dplyr::inner_join(remapped_genes, 
+                          by = "MGI_Symbol")
       
       signature <- signature %>%
-        dplyr::rename(Symbol_old = Symbol) %>%
-        dplyr::inner_join(orthologs, by = "Symbol_old") %>%
-        dplyr::select(-Symbol_old)
+        dplyr::rename(Original_Symbol = Symbol) %>%
+        dplyr::inner_join(orthologs, by = "Original_Symbol") %>%
+        dplyr::select(Symbol = HGNC_Symbol, log2FoldChange, pvalue)
     }
     
     # Run iLINCS on our signature

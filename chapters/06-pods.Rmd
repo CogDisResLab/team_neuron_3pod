@@ -26,7 +26,7 @@ upset_plot
 
 These are overlaps between each datasets GSEA and EnrichR results
 
-```{r pods-2pod, results='asis'}
+```{r pods-2pod, results='asis', eval=FALSE, include=FALSE}
 
 # Generate venn diagrams of each comparison's overlap in GSEA and enrichR results
 # TODO: this could be cleaner
@@ -104,7 +104,7 @@ list(names(twopod_plots) %>% as.list(),
 
 These are overlaps between each datasets GSEA and EnrichR and LINCS results
 
-```{r pods-3pod, results='asis'}
+```{r pods-3pod, results='asis', eval=FALSE, include=FALSE}
 threepod_plots = global_state$results %>%
   purrr::map_dfr("prepared_data", .id = "Pod") %>%
   dplyr::mutate(Pod = stringr::word(Pod, sep =  "_"),
@@ -181,7 +181,7 @@ list(names(threepod_plots) %>% as.list(),
 ```
 
 <!-- ## 4th Pod -->
-```{r pods-4pod, results='asis'}
+```{r pods-4pod, results='asis', eval=FALSE, include=FALSE}
 if(nrow(global_state$results$fourpod_data) > 0) {
   global_state$results$fourpod_data %>%
     knitr::knit_child(
