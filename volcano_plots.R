@@ -24,22 +24,23 @@ process_data <- function(filename) {
       Score = abs(X) * Y,
     ) |>
     arrange(desc(Score)) |>
-    mutate(
-      rank = row_number(),
-      Label = if_else(rank <= 20L & Significant, gene_name, NA_character_)
-    ) |>
-    select(X, Y, Label, Color, Significant)
+    select(gene_name, X, Y, Color, Significant)
 }
+
+genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Neurod2", "Gnai")
 
 combined_data <- map(deg_files, process_data) |>
   bind_rows(.id = "Comparison") |>
-  mutate(Facet = case_when(
-    Comparison == "pngf_1m" ~ "proNGF 1m vs 3m",
-    Comparison == "pngf_3m" ~ "proNGF 3m vs 12m",
-    Comparison == "wt_1m" ~ "Wild Type 1m vs 3m",
-    Comparison == "wt_3m" ~ "Wild Type 3m vs 12m",
-  )) |>
-  select(-Comparison)
+  mutate(
+    Facet = case_when(
+      Comparison == "pngf_1m" ~ "proNGF 1m vs 3m",
+      Comparison == "pngf_3m" ~ "proNGF 3m vs 12m",
+      Comparison == "wt_1m" ~ "Wild Type 1m vs 3m",
+      Comparison == "wt_3m" ~ "Wild Type 3m vs 12m",
+    ),
+    Label = if_else(gene_name %in% genes_of_interest, gene_name, NA_character_)
+  ) |>
+  select(-Comparison, -gene_name)
 
 g <- ggplot(combined_data, aes(
   x = X, y = Y,
@@ -60,9 +61,9 @@ p <- g +
   ggrepel::geom_text_repel(
     max.overlaps = Inf,
     segment.color = "grey30",
-    box.padding = 0.5,
-    segment.size = 0.5,
-    min.segment.length = 0L,
+    box.padding = 1,
+    segment.size = 2L,
+    min.segment.length = 1L,
     show.legend = FALSE
   ) +
   scale_x_continuous(breaks = seq(-10L, 10L, 1L)) +
