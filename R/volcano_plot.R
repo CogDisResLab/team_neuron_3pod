@@ -1,7 +1,6 @@
 volcano_plot <- function(X,
                          showFDRLine = TRUE,
                          alpha = 0.05) {
-
   # Calculate FDR-adjusted p-values for determining the adjusted p-value line
   X_adjusted <- dplyr::mutate(X, p_adj = stats::p.adjust(pvalue, method = "fdr"))
 
@@ -65,23 +64,29 @@ volcano_plot <- function(X,
   # Label top 10 points for the plot
 
   X <- dplyr::mutate(X,
-                     top10label = dplyr::if_else(Symbol %in% top10, Symbol, NA_character_))
+    top10label = dplyr::if_else(Symbol %in% top10, Symbol, NA_character_)
+  )
 
   # Build the volcano plot
 
-  p <- ggplot2::ggplot(X,
-                       ggplot2::aes(
-                         x = log2FoldChange,
-                         y = -log10(pvalue),
-                         col = Significant,
-                         label = top10label
-                       )) +
+  p <- ggplot2::ggplot(
+    X,
+    ggplot2::aes(
+      x = log2FoldChange,
+      y = -log10(pvalue),
+      col = Significant,
+      label = top10label
+    )
+  ) +
     ggplot2::geom_point(size = 1) +
-    ggplot2::scale_color_manual(labels = legend_labels,
-                                 values = legend_colors) +
+    ggplot2::scale_color_manual(
+      labels = legend_labels,
+      values = legend_colors
+    ) +
     ggrepel::geom_text_repel(ggplot2::aes(fontface = "bold"),
-                             size = 9 / ggplot2::.pt,
-                             na.rm = TRUE) +
+      size = 9 / ggplot2::.pt,
+      na.rm = TRUE
+    ) +
     ggplot2::geom_hline(
       linetype = "dotted",
       yintercept = -log10(alpha), # Line for raw p-value 0.05
@@ -135,21 +140,23 @@ volcano_plot <- function(X,
       yintercept = -log10(fdr_pvalue_threshold),
       col = "black" # Use a different color for the FDR line
     ) +
-    ggplot2::annotate("text",
-                      x = max(X$log2FoldChange) * 0.9, # Adjust x position for label
-                      y = -log10(fdr_pvalue_threshold) + 0.1, # Adjust y position for label
-                      label = paste0("FDR Adjusted p=", alpha),
-                      color = "black",
-                      size = 3)
+      ggplot2::annotate("text",
+        x = max(X$log2FoldChange) * 0.9, # Adjust x position for label
+        y = -log10(fdr_pvalue_threshold) + 0.1, # Adjust y position for label
+        label = paste0("FDR Adjusted p=", alpha),
+        color = "black",
+        size = 3
+      )
   }
 
   # Add a label for the raw p-value line
   p <- p + ggplot2::annotate("text",
-                            x = max(X$log2FoldChange) * 0.9, # Adjust x position for label
-                            y = -log10(alpha) + 0.1, # Adjust y position for label
-                            label = paste0("Raw p=", alpha),
-                            color = "black",
-                            size = 3)
+    x = max(X$log2FoldChange) * 0.9, # Adjust x position for label
+    y = -log10(alpha) + 0.1, # Adjust y position for label
+    label = paste0("Raw p=", alpha),
+    color = "black",
+    size = 3
+  )
 
   return(p)
 }

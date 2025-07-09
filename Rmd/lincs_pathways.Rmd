@@ -7,13 +7,13 @@ A total of **`r sum(nrow(.$results$lincs$concordant_pathways), nrow(.$results$li
 * Number of significantly discordant pathways: **`r nrow(.$results$lincs$discordant_pathways)`**
 
 ```{r}
-.$results$lincs$concordant_pathways %>% 
+.$results$lincs$concordant_pathways %>%
   format_lincs_pathways() %>%
-  make_table(caption = paste(.$name, "Top Concordant Pathways")) %>% 
-  DT::formatStyle("Term","white-space"="nowrap")
+  make_table(caption = paste(.$name, "Top Concordant Pathways")) %>%
+  DT::formatStyle("Term", "white-space" = "nowrap")
 
 .$results$lincs$discordant_pathways %>%
   format_lincs_pathways() %>%
-  make_table(caption = paste(.$name, "Bottom Discordant Pathways")) %>% 
-  DT::formatStyle("Term","white-space"="nowrap")
+  make_table(caption = paste(.$name, "Bottom Discordant Pathways")) %>%
+  DT::formatStyle("Term", "white-space" = "nowrap")
 ```

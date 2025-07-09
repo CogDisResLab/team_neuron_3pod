@@ -1,17 +1,17 @@
-#Input: global state
+# Input: global state
 pca_plot <- function(df) {
   # Extract data components
   counts <- df$counts
   design <- df$design
-  
+
   # Convert counts: set "Symbol" column as row names and transpose the matrix
   pca_matrix <- counts %>%
     tibble::column_to_rownames("Symbol") %>%
     t()
-  
+
   # Perform PCA with centering and scaling
   pca_result <- stats::prcomp(pca_matrix, center = TRUE, scale. = TRUE)
-  
+
   # Generate PCA plot with factoextra; use dplyr to extract the Group variable
   plot <- factoextra::fviz_pca_ind(
     pca_result,
@@ -59,12 +59,12 @@ pca_plot <- function(df) {
         )
       )
     )
-  
-  label_layer_index <- which(sapply(plot$layers, function(layer)
-    inherits(layer$geom, "GeomTextRepel"))) # Find the index of the geom text repel used by factoviz
-  
+
+  label_layer_index <- which(sapply(plot$layers, function(layer) {
+    inherits(layer$geom, "GeomTextRepel")
+  })) # Find the index of the geom text repel used by factoviz
+
   plot$layers[[label_layer_index]]$aes_params$size <- 9 / ggplot2::.pt # Change the size of the text repel labels
-  
+
   return(plot)
-  
 }

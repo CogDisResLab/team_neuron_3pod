@@ -1,45 +1,46 @@
-group_count_heatmap <- function(df, useFDR=TRUE, upper_quantile = 0.90, lower_quantile = 0.10, alpha = 0.05) {
-  
+group_count_heatmap <- function(df, useFDR = TRUE, upper_quantile = 0.90, lower_quantile = 0.10, alpha = 0.05) {
   # Extract the data element and adjust p-values if requested
   data <- df$data
-  
+
   if (useFDR) {
     data$pvalue <- p.adjust(data$pvalue, method = "fdr")
   }
-  
+
   # Calculate quantiles for log2FoldChange (remove NA if present)
   lower_val <- stats::quantile(data$log2FoldChange, lower_quantile, na.rm = TRUE)
   upper_val <- stats::quantile(data$log2FoldChange, upper_quantile, na.rm = TRUE)
-  
+
   # Filter significant genes based on p-value and fold-change thresholds
-  sig_genes <- data %>% 
-    dplyr::filter(pvalue <= alpha, 
-                  log2FoldChange >= upper_val | log2FoldChange <= lower_val) %>%
+  sig_genes <- data %>%
+    dplyr::filter(
+      pvalue <= alpha,
+      log2FoldChange >= upper_val | log2FoldChange <= lower_val
+    ) %>%
     dplyr::pull(Symbol)
-  
+
   if (length(sig_genes) == 0) {
     stop("No significant genes found with the given thresholds when plotting group gene expression heatmap.")
   }
-  
+
   # Get design information for the groups of interest
   groups_of_interest <- unique(c(df$group1, df$group2))
   design_info <- global_state$design %>%
     dplyr::filter(Group %in% groups_of_interest)
-  
+
   # Subset count data for significant genes and samples in the design
   count_matrix <- global_state$counts %>%
     dplyr::select(Symbol, dplyr::all_of(design_info$Sample)) %>%
     dplyr::filter(Symbol %in% sig_genes) %>%
     tibble::column_to_rownames("Symbol") %>%
     as.matrix()
-  
+
   # Scale the matrix by rows
   scaled_mat <- t(scale(t(count_matrix)))
-  
+
   # Determine color scale limits from the scaled matrix
   min_val <- min(scaled_mat, na.rm = TRUE)
   max_val <- max(scaled_mat, na.rm = TRUE)
-  
+
   # Create the heatmap legend with a blue-white-red color ramp
   legend <- ComplexHeatmap::Legend(
     title = NULL,
@@ -49,12 +50,12 @@ group_count_heatmap <- function(df, useFDR=TRUE, upper_quantile = 0.90, lower_qu
     direction = "vertical",
     labels_gp = grid::gpar(fontsize = 8)
   )
-  
+
   # Create a factor for group annotation and generate a palette with distinct colors
   group_factor <- factor(design_info$Group)
   group_palette <- randomcoloR::distinctColorPalette(nlevels(group_factor))
   names(group_palette) <- levels(group_factor)
-  
+
   # Set up heatmap annotation for group information
   annotation <- ComplexHeatmap::HeatmapAnnotation(
     Group = group_factor,
@@ -72,7 +73,7 @@ group_count_heatmap <- function(df, useFDR=TRUE, upper_quantile = 0.90, lower_qu
       )
     )
   )
-  
+
   # Create the heatmap without row names or dendrogram, rotating column names for clarity
   heatmap_plot <- ComplexHeatmap::Heatmap(
     scaled_mat,
@@ -83,7 +84,7 @@ group_count_heatmap <- function(df, useFDR=TRUE, upper_quantile = 0.90, lower_qu
     show_row_dend = FALSE,
     show_heatmap_legend = FALSE
   )
-  
+
   # Draw the heatmap with specified padding and legend settings
   ComplexHeatmap::draw(
     heatmap_plot,
@@ -92,5 +93,4 @@ group_count_heatmap <- function(df, useFDR=TRUE, upper_quantile = 0.90, lower_qu
     heatmap_legend_side = "right",
     annotation_legend_side = "top"
   )
-  
 }

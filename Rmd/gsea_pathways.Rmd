@@ -8,7 +8,7 @@ A total of **`r sum(.$bpn@gsea@num_sig_pos_enriched, .$bpn@gsea@num_sig_neg_enri
 * Number of significantly down-regulated pathways: **`r .$bpn@gsea@num_sig_neg_enriched`**
 
 ```{r}
-.$bpn@gsea@sig_pos_enriched %>% 
+.$bpn@gsea@sig_pos_enriched %>%
   format_gsea_pathways() %>%
   make_table(caption = paste(.$name, "Up-regulated Pathways")) %>%
   DT::formatStyle("Term", "white-space" = "nowrap")

@@ -17,7 +17,7 @@ PAVER::PAVER_regulation_plot(.[[1]]) +
 x <- PAVER::PAVER_interpretation_plot(.[[1]])
 x$layers[[2]] <- NULL
 
-x <- x + ggrepel::geom_text_repel(size = 9 / ggplot2::.pt) 
+x <- x + ggrepel::geom_text_repel(size = 9 / ggplot2::.pt)
 x + ggprism::theme_prism(base_size = 9)
 ```
 

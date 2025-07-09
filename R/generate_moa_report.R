@@ -1,4 +1,4 @@
-#Input: Annotated DrugFindr investigate signature results
+# Input: Annotated DrugFindr investigate signature results
 generate_moa_report <- function(annotated_signature) {
   moa_report <- annotated_signature %>%
     dplyr::select(integratedMoas, Target, GeneTargets) %>%
@@ -13,6 +13,6 @@ generate_moa_report <- function(annotated_signature) {
       N = dplyr::n()
     ) %>%
     dplyr::arrange(dplyr::desc(N))
-    
-    moa_report
+
+  moa_report
 }

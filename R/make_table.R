@@ -4,11 +4,11 @@ make_table <- function(df, caption = NULL) {
       .cols = dplyr::where(is.numeric),
       .fns = ~ round(.x, 3)
     ))
-  
+
   DT::datatable(
     df,
     rownames = FALSE,
-    caption = htmltools::tags$caption(style = 'text-align: left;', caption),
+    caption = htmltools::tags$caption(style = "text-align: left;", caption),
     options = list(
       scrollX = TRUE,
       scrollY = TRUE,

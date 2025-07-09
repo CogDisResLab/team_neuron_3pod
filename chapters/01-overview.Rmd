@@ -4,17 +4,18 @@ This is an overview of the transcriptomic data contained within the report.
 
 <!-- ## Experimental Design -->
 ```{r overview_design, results='asis'}
-
 # Conditionally include the experimental design table if counts are used
 
-if(global_state$using_counts) {
+if (global_state$using_counts) {
   global_state$design %>%
     knitr::knit_child(
-      text = c('',
-               '```{r}',
-               'make_table(.)',
-               '```',
-               ''),
+      text = c(
+        "",
+        "```{r}",
+        "make_table(.)",
+        "```",
+        ""
+      ),
       envir = environment(),
       quiet = TRUE
     ) %>%
@@ -26,19 +27,21 @@ if(global_state$using_counts) {
 
 <!-- ## Sample PCA -->
 ```{r overview_pca, results='asis'}
-
-#Conditionally include PCA plot if counts are used
+# Conditionally include PCA plot if counts are used
 
 if (global_state$using_counts) {
   global_state %>%
     knitr::knit_child(
-      text = c('',
-               '```{r}',
-               'pca_plot(.)',
-               '```',
-               ''),
+      text = c(
+        "",
+        "```{r}",
+        "pca_plot(.)",
+        "```",
+        ""
+      ),
       envir = environment(),
-      quiet = TRUE) %>%
+      quiet = TRUE
+    ) %>%
     c("\n\nThis is the PCA of each sample.\n\n", .) %>%
     c("\n\n## Sample PCA\n\n", .) %>%
     cat(sep = "\n")
@@ -47,17 +50,18 @@ if (global_state$using_counts) {
 
 <!-- ## Gene Expression Heatmap -->
 ```{r overview_gex_heatmap, results='asis'}
-
 # Conditionally include gene expression heatmap if counts are used
 
 if (global_state$using_counts) {
   global_state %>%
     knitr::knit_child(
-      text = c('',
-               '```{r}',
-               'variable_genes_heatmap(.)',
-               '```',
-               ''),
+      text = c(
+        "",
+        "```{r}",
+        "variable_genes_heatmap(.)",
+        "```",
+        ""
+      ),
       envir = environment(),
       quiet = TRUE
     ) %>%

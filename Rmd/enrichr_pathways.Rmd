@@ -7,13 +7,13 @@ A total of **`r sum(.$bpn@enrichr@num_sig_up_enrichr, .$bpn@enrichr@num_sig_down
 * Number of significantly down-regulated pathways: **`r .$bpn@enrichr@num_sig_down_enrichr`**
 
 ```{r}
-.$bpn@enrichr@sig_up_enrichr %>% 
-  format_enrichr_pathways %>%
+.$bpn@enrichr@sig_up_enrichr %>%
+  format_enrichr_pathways() %>%
   make_table(caption = paste(.$name, "Up-Regulated Pathways")) %>%
-  DT::formatStyle("Term","white-space"="nowrap")
+  DT::formatStyle("Term", "white-space" = "nowrap")
 
 .$bpn@enrichr@sig_down_enrichr %>%
-  format_enrichr_pathways %>%
+  format_enrichr_pathways() %>%
   make_table(caption = paste(.$name, "Down-Regulated Pathways")) %>%
-  DT::formatStyle("Term","white-space"="nowrap")
+  DT::formatStyle("Term", "white-space" = "nowrap")
 ```

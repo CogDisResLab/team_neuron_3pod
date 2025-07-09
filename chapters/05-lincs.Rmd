@@ -7,39 +7,42 @@ This is LINCS
 Putative drug therapies were identified with signature-based connectivity analysis utilizing the Library of Integrated Network-based Signatures (LINCS) database.
 
 ```{r lincs-signatures, results='asis'}
-
 global_state$data <- global_state$data %>%
   purrr::map(function(x) {
-    
     signature <- x$data
-    
+
     # If we don't have human datam, convert mouse or rat genes to human orthologs for iLINCS
-    if(global_state$species != "human") {
-      org.db = switch (global_state$species,,
+    if (global_state$species != "human") {
+      org.db <- switch(global_state$species,
+        ,
         "mouse" = org.Mm.eg.db::org.Mm.eg.db,
         "rat" = org.Rn.eg.db::org.Rn.eg.db
       )
-      
-      remapped_genes <- AnnotationDbi::select(org.db, 
-        keys = signature$Symbol, 
-        columns = c("SYMBOL", "ALIAS"), 
-        keytype = "ALIAS") %>%
+
+      remapped_genes <- AnnotationDbi::select(org.db,
+        keys = signature$Symbol,
+        columns = c("SYMBOL", "ALIAS"),
+        keytype = "ALIAS"
+      ) %>%
         dplyr::rename(Original_Symbol = ALIAS, MGI_Symbol = SYMBOL)
-      
-      
-      orthologs <- babelgene::orthologs(genes = remapped_genes$MGI_Symbol, 
-                                        human = FALSE, 
-                                        species = global_state$species) %>%
+
+
+      orthologs <- babelgene::orthologs(
+        genes = remapped_genes$MGI_Symbol,
+        human = FALSE,
+        species = global_state$species
+      ) %>%
         dplyr::select(HGNC_Symbol = human_symbol, MGI_Symbol = symbol) %>%
-        dplyr::inner_join(remapped_genes, 
-                          by = "MGI_Symbol")
-      
+        dplyr::inner_join(remapped_genes,
+          by = "MGI_Symbol"
+        )
+
       signature <- signature %>%
         dplyr::rename(Original_Symbol = Symbol) %>%
         dplyr::inner_join(orthologs, by = "Original_Symbol") %>%
         dplyr::select(Symbol = HGNC_Symbol, log2FoldChange, pvalue)
     }
-    
+
     # Run iLINCS on our signature
     signatures <- drugfindR::investigateSignature(
       expr = signature,
@@ -48,50 +51,54 @@ global_state$data <- global_state$data %>%
       outputLib = "CP",
       geneColumn = "Symbol",
       logfcColumn = "log2FoldChange",
-      pvalColumn = "pvalue")
-    
+      pvalColumn = "pvalue"
+    )
+
     # Split the signatures then annotate with perturbagen metadata
     concordant <- signatures %>%
-      dplyr::filter(Similarity >= 0) %>% 
+      dplyr::filter(Similarity >= 0) %>%
       dplyr::inner_join(get_ilincs_metadata(.$TargetSignature), by = "TargetSignature") %>%
       left_join(global_state$lincs_fda, by = c("Target" = "sm_name"))
-    
+
     discordant <- signatures %>%
-      dplyr::filter(Similarity < 0) %>% 
+      dplyr::filter(Similarity < 0) %>%
       dplyr::inner_join(get_ilincs_metadata(.$TargetSignature), by = "TargetSignature") %>%
       dplyr::left_join(global_state$lincs_fda, by = c("Target" = "sm_name"))
-    
+
     # Summarize and count unique MOAs
     concordant_moa_report <- generate_moa_report(concordant)
     discordant_moa_report <- generate_moa_report(discordant)
-    
+
     # Summarize and count unique Gene Targets
     concordant_gene_report <- generate_gene_report(concordant, signature)
     discordant_gene_report <- generate_gene_report(discordant, signature)
-    
+
     # Do enrichR with the gene targets
-    discordant_pathways <- do_enrichr(discordant_gene_report$Symbol) 
+    discordant_pathways <- do_enrichr(discordant_gene_report$Symbol)
     concordant_pathways <- do_enrichr(concordant_gene_report$Symbol)
-    
+
     # Package together to store in results
-    lincs <- dplyr::lst(concordant,
+    lincs <- dplyr::lst(
+      concordant,
       discordant,
       concordant_moa_report,
       discordant_moa_report,
       concordant_gene_report,
       discordant_gene_report,
       discordant_pathways,
-      concordant_pathways)
-    
+      concordant_pathways
+    )
+
     x$results$lincs <- lincs
-    
+
     x
-})
+  })
 
 global_state$data %>%
-  purrr::map(~ knitr::knit_child(here::here("Rmd", "lincs_signatures.Rmd"), 
-                                 envir = environment(), 
-                                 quiet = TRUE)) %>%
+  purrr::map(~ knitr::knit_child(here::here("Rmd", "lincs_signatures.Rmd"),
+    envir = environment(),
+    quiet = TRUE
+  )) %>%
   purrr::list_c() %>%
   cat(sep = "\n")
 ```
@@ -102,9 +109,10 @@ These are LINCS Perturbagens MoAs and Genetargets
 
 ```{r lincs-moas-genes, results='asis'}
 global_state$data %>%
-  purrr::map(~ knitr::knit_child(here::here("Rmd", "lincs_metadata.Rmd"), 
-                                 envir = environment(), 
-                                 quiet = TRUE)) %>%
+  purrr::map(~ knitr::knit_child(here::here("Rmd", "lincs_metadata.Rmd"),
+    envir = environment(),
+    quiet = TRUE
+  )) %>%
   purrr::list_c() %>%
   cat(sep = "\n")
 ```
@@ -132,14 +140,16 @@ lincs_paver_input <- purrr::map_dfr(global_state$data, function(x) {
   )
 }, .id = "Group") %>%
   dplyr::select(GOID, CS = Combined.Score, Group) %>%
-  dplyr::mutate(CS = sign(CS) * log2(abs(CS)) + 1,
-         Type = ifelse(CS > 0, "C", "D")) %>%
+  dplyr::mutate(
+    CS = sign(CS) * log2(abs(CS)) + 1,
+    Type = ifelse(CS > 0, "C", "D")
+  ) %>%
   dplyr::distinct(GOID, Group, .keep_all = TRUE) %>%
   tidyr::pivot_wider(names_from = c(Group, Type), values_from = CS, names_sep = "-")
 
-minClusterSize = 5
-maxCoreScatter = 0.33
-minGap = (1 - maxCoreScatter) * 3 / 4
+minClusterSize <- 5
+maxCoreScatter <- 0.33
+minGap <- (1 - maxCoreScatter) * 3 / 4
 
 LINCS_PAVER_result <- PAVER::prepare_data(lincs_paver_input, global_state$embeddings, global_state$term2name) %>%
   PAVER::generate_themes(maxCoreScatter = maxCoreScatter, minGap = minGap, minClusterSize = minClusterSize)
@@ -147,8 +157,10 @@ LINCS_PAVER_result <- PAVER::prepare_data(lincs_paver_input, global_state$embedd
 global_state$results <- append(global_state$results, dplyr::lst(LINCS_PAVER_result))
 
 list(LINCS_PAVER_result, "logCS") %>%
-  knitr::knit_child(text = readLines(here::here("Rmd", "paver_report.Rmd")),
-             envir = environment(),
-             quiet = TRUE) %>%
+  knitr::knit_child(
+    text = readLines(here::here("Rmd", "paver_report.Rmd")),
+    envir = environment(),
+    quiet = TRUE
+  ) %>%
   cat(sep = "\n")
 ```

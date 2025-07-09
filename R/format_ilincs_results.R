@@ -1,4 +1,4 @@
-#Input: Annotated DrugFindr investigate signature results
+# Input: Annotated DrugFindr investigate signature results
 format_ilincs_results <- function(df) {
   df %>%
     dplyr::mutate(Similarity = round(Similarity, 3)) %>%
@@ -11,5 +11,6 @@ format_ilincs_results <- function(df) {
       Tissue = tissue,
       Concentration = TargetConcentration,
       Time = TargetTime,
-      `FDA Phase` = max_fda_phase)
-}  
+      `FDA Phase` = max_fda_phase
+    )
+}

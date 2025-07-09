@@ -1,4 +1,4 @@
-#Input: Annotated DrugFindr investigate signature results
+# Input: Annotated DrugFindr investigate signature results
 format_gene_results <- function(df) {
   df %>%
     dplyr::rename(N = n) %>%

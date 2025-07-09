@@ -1,4 +1,4 @@
-#Input: bpn@enrichr@sig_up_enrichr, bpn@enrichr@sig_down_enrichr
+# Input: bpn@enrichr@sig_up_enrichr, bpn@enrichr@sig_down_enrichr
 format_enrichr_pathways <- function(df) {
   df %>%
     mutate(
