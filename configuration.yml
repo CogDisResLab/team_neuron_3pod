@@ -15,12 +15,6 @@ data:
   - group1: 3 month ProNGF
     group2: 12 month ProNGF
     file: pngf_3m-12m_clean.csv
-  - group1: 1 month WT
-    group2: 12 month WT
-    file: wt_1m-12m_clean.csv
-  - group1: 1 month ProNGF
-    group2: 12 month ProNGF
-    file: pngf_1m-12m_clean.csv
 design: design.csv
 
 # Debugging
