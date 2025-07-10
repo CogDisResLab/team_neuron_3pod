@@ -1,0 +1,316 @@
+integratedMoas,Target,GeneTargets,N
+Mitochondrial complex I (NADH dehydrogenase) inhibitor (Mitochondrial complex I,Metformin,GPD2|MT-ND1|ND2|ND3|ND4|ND4L|ND5|ND6|NDUFA1|NDUFA10|NDUFA11|NDUFA12|NDUFA13|NDUFA2|NDUFA3|NDUFA4|NDUFA4L2|NDUFA5|NDUFA6|NDUFA7|NDUFA8|NDUFA9|NDUFAB1|NDUFAF1|NDUFAF2|NDUFAF3|NDUFAF4|NDUFB1|NDUFB10|NDUFB11|NDUFB2|NDUFB3|NDUFB4|NDUFB5|NDUFB6|NDUFB7|NDUFB8|NDUFB9|NDUFC1|NDUFC2|NDUFS1|NDUFS2|NDUFS3|NDUFS4|NDUFS5|NDUFS6|NDUFS7|NDUFS8|NDUFV1|NDUFV2|NDUFV3,51
+Mitochondrial glycerol-3-phosphate dehydrogenase inhibitor,Metformin,GPD2|MT-ND1|ND2|ND3|ND4|ND4L|ND5|ND6|NDUFA1|NDUFA10|NDUFA11|NDUFA12|NDUFA13|NDUFA2|NDUFA3|NDUFA4|NDUFA4L2|NDUFA5|NDUFA6|NDUFA7|NDUFA8|NDUFA9|NDUFAB1|NDUFAF1|NDUFAF2|NDUFAF3|NDUFAF4|NDUFB1|NDUFB10|NDUFB11|NDUFB2|NDUFB3|NDUFB4|NDUFB5|NDUFB6|NDUFB7|NDUFB8|NDUFB9|NDUFC1|NDUFC2|NDUFS1|NDUFS2|NDUFS3|NDUFS4|NDUFS5|NDUFS6|NDUFS7|NDUFS8|NDUFV1|NDUFV2|NDUFV3,51
+NFkB pathway inhibitor,"BSPBIO_001592|179324-69-7|Pyrrolidine Dithiocarbamate|2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate|BDBM50127227|Ursolic acid|BAY-117821|IMD-0354|Avicin-D|Avicin-G",PTGS1|PTGS2|ADRM1|PSMA1|PSMA2|PSMA3|PSMA4|PSMA5|PSMA6|PSMA7|PSMA8|PSMB1|PSMB10|PSMB11|PSMB2|PSMB3|PSMB4|PSMB5|PSMB6|PSMB7|PSMB8|PSMB9|PSMC1|PSMC2|PSMC3|PSMC4|PSMC5|PSMC6|PSMD1|PSMD11|PSMD12|PSMD13|PSMD14|PSMD2|PSMD3|PSMD4|PSMD6|PSMD7|PSMD8|SEM1|HSD11B1|ALOX5|FNTA|IKBKB|PTPN1|NA,50
+CDK inhibitor,AT-7519|Indigo Red|BMS-387032|CGP 60474|Aminopurvalanol|Seliciclib|Alvocidib|Indirubin-3'monoxime,CDK1|CDK10|CDK11B|CDK12|CDK13|CDK14|CDK15|CDK16|CDK17|CDK18|CDK19|CDK2|CDK20|CDK3|CDK4|CDK5|CDK6|CDK7|CDK8|CDK9|GSK3A|EGFR|PYGM,48
+HDAC inhibitor,BG-51|4LY1|BG45|Tacedinaline|Entinostat|NCH-51|Mocetinostat|BML 210,HDAC3|HDAC1|HDAC2|NA|HDAC10|HDAC11|HDAC4|HDAC5|HDAC6|HDAC7|HDAC8|HDAC9,43
+Glutamate receptor antagonist,6266-99-5|JNJ-16259685|Topiramate|Eliprodil,GRM5|GRM1|CA2|CA4|GABRA1|GABRA2|GABRA3|GABRA4|GABRA5|GABRA6|GABRB1|GABRB2|GABRB3|GABRD|GABRE|GABRG1|GABRG2|GABRG3|GABRP|GABRQ|GRIA1|GRIA2|GRIA3|GRIA4|GRIK1|GRIK2|GRIK3|GRIK4|GRIK5|SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A|GRIN1|GRIN2B,41
+Phosphodiesterase inhibitor,LY-294002|Tadalafil|Zaprinast|Propentofylline|Zardaverine|Cilostazol|Siguazodan|YM 976|Pentoxifylline,MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PLK1|PRKDC|PDE11A|PDE5A|PDE1A|PDE4D|PDE3A|PDE4A|ADORA2A|ADORA2B|PDE10A|PDE1B|PDE1C|PDE2A|PDE3B|PDE4B|PDE4C|PDE6A|PDE6B|PDE6C|PDE6D|PDE6G|PDE6H|PDE7A|PDE7B|PDE8A|PDE8B|PDE9A|TNF,41
+Proteasome inhibitor,SCH-79797|179324-69-7|MG-132,F2R|ADRM1|PSMA1|PSMA2|PSMA3|PSMA4|PSMA5|PSMA6|PSMA7|PSMA8|PSMB1|PSMB10|PSMB11|PSMB2|PSMB3|PSMB4|PSMB5|PSMB6|PSMB7|PSMB8|PSMB9|PSMC1|PSMC2|PSMC3|PSMC4|PSMC5|PSMC6|PSMD1|PSMD11|PSMD12|PSMD13|PSMD14|PSMD2|PSMD3|PSMD4|PSMD6|PSMD7|PSMD8|SEM1,40
+Carbonic anhydrase inhibitor,Topiramate|Benzthiazide,CA2|CA4|GABRA1|GABRA2|GABRA3|GABRA4|GABRA5|GABRA6|GABRB1|GABRB2|GABRB3|GABRD|GABRE|GABRG1|GABRG2|GABRG3|GABRP|GABRQ|GRIA1|GRIA2|GRIA3|GRIA4|GRIK1|GRIK2|GRIK3|GRIK4|GRIK5|SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A|SLC12A3,39
+Kainate receptor antagonist,Topiramate,CA2|CA4|GABRA1|GABRA2|GABRA3|GABRA4|GABRA5|GABRA6|GABRB1|GABRB2|GABRB3|GABRD|GABRE|GABRG1|GABRG2|GABRG3|GABRP|GABRQ|GRIA1|GRIA2|GRIA3|GRIA4|GRIK1|GRIK2|GRIK3|GRIK4|GRIK5|SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A,37
+Tubulin inhibitor,Parbendazole|ChEBI91594|SCHEMBL14177979|BRD-A28746609|Mebendazole|Ixabepilone|BRD-K10916986-001-01-6|Lexibulin,TUBB|NR1I2|NA|TUBA1A|TUBA1B|TUBA1C|TUBA3E|TUBA4A|TUBB1|TUBB2A|TUBB2B|TUBB3|TUBB4A|TUBB4B|TUBB6|TUBB8,36
+Dopamine receptor antagonist,"Risperidone|Chlorprothixene|Ecopipam|Mesoridazine|Alizapride|Cis-N,N-Dimethyl-9-(3-(1-Piperazinyl)Propylidene)Thioxanthene-2-Sulfonamide|Ziprasidone",ADRA1A|ADRA1B|DRD2|DRD3|DRD4|HRH1|HTR1A|HTR1D|HTR2A|HTR2C|DRD1|DRD5|HTR1B|HTR1E|HTR7,33
+VEGFR inhibitor,Foretinib|OSI-930|Sorafenib|C19H19FN4O3|Cediranib,FLT1|FLT3|FLT4|KDR|KIT|MET|PDGFRA|PDGFRB|TEK|BRAF|DDR2|FGFR1|RAF1|RET,33
+MTOR inhibitor,NU-7026|LY-294002|Sirolimus|OSI-027|AZD-8055|EX-8678|TORIN-2|WYE 125132|Dactolisib,PRKDC|MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PLK1|FKBP1A|NA|PIK3R1|PIK3R2|PIK3R3|PIK3R5,29
+PI3K inhibitor,NU-7026|Buparlisib|KU0060648|EX-8678|ZSTK 474|LY 303511|PIK 75|Dactolisib,PRKDC|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PIK3R1|PIK3R2|PIK3R3|PIK3R5|NA|BRD2|BRD3|BRD4|MTOR,28
+FLT3 inhibitor,Tozasertib|Sorafenib|Lestaurtinib,ABL1|AURKA|AURKB|AURKC|BCR|FLT3|JAK2|BRAF|DDR2|FGFR1|FLT1|FLT4|KDR|KIT|PDGFRB|RAF1|RET|NTRK1|NTRK2|NTRK3,24
+Cell cycle inhibitor,AT-7519|BMS-387032,CDK1|CDK10|CDK11B|CDK12|CDK13|CDK14|CDK15|CDK16|CDK17|CDK18|CDK19|CDK2|CDK20|CDK3|CDK4|CDK5|CDK6|CDK7|CDK8|CDK9,23
+KIT inhibitor,OSI-930|Sorafenib|Cediranib,FLT1|FLT4|KDR|KIT|BRAF|DDR2|FGFR1|FLT3|PDGFRB|RAF1|RET|PDGFRA,21
+Serotonin receptor antagonist,Risperidone|Alaproclate|Ziprasidone,ADRA1A|ADRA1B|DRD2|DRD3|DRD4|HRH1|HTR1A|HTR1D|HTR2A|HTR2C|SLC6A4|HTR1B|HTR1E|HTR7,20
+MAP kinase p38 beta inhibitor,Regorafenib|Losmapimod,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK|MAPK14,18
+PLK inhibitor,LY-294002|GW843682X|BI-2536|Rigosertib,MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PLK1|PRKDC|PLK3|CDK1|F2R|FLT1|FYN|PDGFRA|PLK2|SRC,18
+Serine/threonine-protein kinase B-raf inhibitor,CHIR-265|Regorafenib,BRAF|KDR|ABL1|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,18
+Adrenergic receptor antagonist,BRD-A43331270-001-01-6|Pindolol|Nafronyl|Imiloxan|Labetalol,ADRA1A|CACNA1C|ADRB1|ADRB2|HTR1A|NA|ADRA2A|ADRA2B|ADRA1B|ADRA1D|ADRA2C|ADRB3,17
+Benzodiazepine receptor antagonist,ZK-93426|Flumazenil,GABRA1|GABRA2|GABRA3|GABRA4|GABRA5|GABRA6|GABRB1|GABRB2|GABRB3|GABRD|GABRE|GABRG1|GABRG2|GABRG3|GABRP|GABRQ,17
+JAK inhibitor,Ruxolitinib|Tozasertib|ZM-39923|Lestaurtinib,JAK1|JAK2|TYK2|ABL1|AURKA|AURKB|AURKC|BCR|FLT3|NA|NTRK1|NTRK2|NTRK3|RET,17
+Discoidin domain-containing receptor 2 inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Fibroblast growth factor receptor 1 inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Fibroblast growth factor receptor 2 inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+GABA receptor modulator,Amidate,GABRA1|GABRA2|GABRA3|GABRA4|GABRA5|GABRA6|GABRB1|GABRB2|GABRB3|GABRD|GABRE|GABRG1|GABRG2|GABRG3|GABRP|GABRQ,16
+Platelet-derived growth factor receptor inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Serine/threonine-protein kinase RAF inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Stem cell growth factor receptor inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Tyrosine-protein kinase ABL inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Tyrosine-protein kinase FRK inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Tyrosine-protein kinase TIE-2 inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Tyrosine-protein kinase receptor RET inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Vascular endothelial growth factor receptor inhibitor,Regorafenib,ABL1|BRAF|DDR2|FGFR1|FGFR2|FLT1|FLT4|FRK|KDR|KIT|MAPK11|PDGFRA|PDGFRB|RAF1|RET|TEK,16
+Aurora kinase inhibitor,331771-20-1|SCHEMBL16980224|Alisertib|Tozasertib|Aurora A Inhibitor I|GSK-1070916,AURKA|AURKB|ABL1|AURKC|BCR|FLT3|JAK2,14
+Calcium channel blocker,BRD-A43331270-001-01-6|Nicardipine|CHEBI:82814|Lacidipine|Cinnarizine|Dantrolene-13C3|BDBM82056,ADRA1A|CACNA1C|CACNA1D|CACNA1F|CACNA1S|HRH1|RYR1,14
+RAF inhibitor,ZM336372|Sorafenib|AZ628,NA|BRAF|DDR2|FGFR1|FLT1|FLT3|FLT4|KDR|KIT|PDGFRB|RAF1|RET,14
+ATPase inhibitor,Xanthohumol|PRESTWICK3_000646|Ursolic acid|SPECTRUM_000715|AC1NWALF|Cymarigenen|Proscillaridin A|Digitoxin|Cymarin|Omeprazole,VCP|NA|HSD11B1|PTPN1|ATP1A1|ATP4A|ATP4B,13
+Bcr-Abl kinase inhibitor,Tozasertib|Nilotinib|HY-11007,ABL1|AURKA|AURKB|AURKC|BCR|FLT3|JAK2|KIT,12
+Cyclooxygenase inhibitor,Antipyrine|BSPBIO_001592|AM404|Indomethacin|Etodolac|Etoricoxib|Gamolenic acid,NA|PTGS1|PTGS2|TRPV1|PPARG|PTGDR2,12
+DNA dependent protein kinase inhibitor,NU-7026|LY-294002|KU0060648,PRKDC|MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PLK1,12
+PDGFR tyrosine kinase receptor inhibitor,Sorafenib|Trapidil,BRAF|DDR2|FGFR1|FLT1|FLT3|FLT4|KDR|KIT|PDGFRB|RAF1|RET|PDGFRA,12
+Sodium channel blocker,Mexiletine|Butamben|Benzocaine,SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A|NA,12
+Histamine receptor antagonist,Cidoxepin|Chlorpheniramine|Clobenpropit|Roxatidine Acetate|Loratadine|Doxylamine|Levocetirizine,HRH1|HRH2|SLC6A2|SLC6A4|HRH3|HRH4,11
+Local anesthetic,Articaine|Dimethisoquin,SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A|NA,11
+RET tyrosine kinase inhibitor,Sorafenib,BRAF|DDR2|FGFR1|FLT1|FLT3|FLT4|KDR|KIT|PDGFRB|RAF1|RET,11
+Retinoid receptor agonist,Tamibarotene|Ttnpb|O-Demethylated Adapalene|Alitretinoin|Methoprene acid,RARA|RARB|RARG|RXRA|RXRB|RXRG,11
+Serine/threonine-protein kinase mTOR inhibitor,MLN-0128|Palomid 529 (P529)|BGT-226,MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PIK3R1|PIK3R2|PIK3R3|PIK3R5,11
+AKT inhibitor,MK-2206|pyrvinium-pamoate|C21H27N7O3|Honokiol|AKT Inhibitor IV,AKT1|AKT2|AKT3|AR|PRKCQ|NA,10
+Adrenergic receptor agonist,Pseudoephedrine|Oxymetazoline|AC1NWAO0|SPECTRUM_001418|Fenoterol,SLC6A2|ADRA1A|ADRA1B|ADRA1D|ADRA2A|ADRA2B|ADRA2C|ADRB2,10
+Glucocorticoid receptor agonist,Dexamethasone Acetate|AC1NWAML|NCGC00179649-07|SPECTRUM_001092|Hydrocortisone|Fluticasone Propionate|AC1NWAPO|SPECTRUM_001088|BRD-A69951442-001-01-3,NR3C1|NA|PGR|NR3C2,10
+HSP inhibitor,"PU-H-71|13-Hydroxy-8,14,19-trimethoxy-4,10,12,16-tetramethyl-3,20,22-trioxo-2-azabicyclo[16.3.1]docosa-1(21),4,6,10,18-pentaen-9-yl carbamate|Radicicol|SCHEMBL16226502|NVP-AUY922|Alvespimycin|BIIB 021|CCT 018159|VER 155008",HSP90AA1|NA|HSP90AB1|HSPA1A,10
+Quorum sensing signaling modulator,Ursolic acid|Ellagic acid,HSD11B1|PTPN1|CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,10
+Sodium channel alpha subunit blocker,Disopyramide,SCN10A|SCN11A|SCN1A|SCN2A|SCN3A|SCN4A|SCN5A|SCN7A|SCN8A|SCN9A,10
+Topoisomerase inhibitor,"Camptothecin|NSC169534|N-[4-(Acridin-9-ylmethyl)-3-methoxyphenyl]methanesulfonamide|AC1MJ3VH|Pirarubicin|Teniposide|Idarubicin|Epirubicin|4,11-Diethyl-4,9-dihydroxy-1H-pyrano[3',4':6,7]indolizino[1,2-b]quinoline-3,14(4H,12H)-dione|NCGC00018127-01",TOP1|TOP2A,10
+Aldose reductase inhibitor,Rhamnetin|Ellagic acid,ALOX5|CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,9
+HCV inhibitor,Ellagic acid|Clemizole,CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK|NA,9
+HIV integrase inhibitor,"2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate|Ellagic acid",ALOX5|CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,9
+PI3-kinase class I inhibitor,BGT-226,MTOR|PIK3CA|PIK3CB|PIK3CD|PIK3CG|PIK3R1|PIK3R2|PIK3R3|PIK3R5,9
+Reverse transcriptase inhibitor,Entecavir|Ellagic acid,NA|CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,9
+Beta-secretase inhibitor,Ellagic acid,CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,8
+Glutathione transferase inhibitor,Ellagic acid,CA1|CA12|CA14|CA2|CA4|CA6|CA9|SYK,8
+MEK inhibitor,CI-1040|Pimasertib|AZD-8330|Trametinib,MAP2K1|MAP2K2,8
+Tyrosine kinase inhibitor,Aminopurvalanol|C28H30CIN5O4S|CP-724714|SU-11652|Hypericin,CDK1|CDK2|CDK5|MET|ERBB2|KDR|PDGFRB|NA,8
+Glucosidase inhibitor,Deoxyrhapontin|Acarbose,XDH|AMY2A|GAA|MGAM,7
+Glycogen synthase kinase inhibitor,CHIR-99021|Indigo Red|Indirubin-3'monoxime,NA|CDK1|CDK5|GSK3A,7
+Acetylcholine receptor antagonist,Diphemanil|Gelsemine|Zamifenacin|Hyoscyamine,CHRM1|CHRM3|GLRA3|NA,6
+EGFR inhibitor,Pelitinib|Erlotinib|CP-724714|C24H25CLFN5O3,EGFR|ERBB2|ERBB4,6
+Estrogen receptor agonist,"SPECTRUM_001048|Estra-1,3,5(10),7-tetraen-17-one, 3-hydroxy-|STOCK1N-09285|Estradiol Cypionate",ESR1|ESR2|NR1I2|HSD17B1,6
+Farnesyltransferase inhibitor,Tipifarnib|FTI276|BDBM50127227,CHURC1-FNTB|FNTA|FNTB|IKBKB,6
+Gamma-secretase inhibitor,Avagacestat (BMS-708163),APH1A|APH1B|NCSTN|PSEN1|PSEN2|PSENEN,6
+Growth factor receptor inhibitor,Lestaurtinib,FLT3|JAK2|NTRK1|NTRK2|NTRK3|RET,6
+P38 MAPK inhibitor,VX-745|SD 169|SB-203580|SKF 86002,MAPK14|MAPK1|MAPK11|NA,6
+Potassium channel blocker,Oleoylethanolamide|XE991|Penitrem A,GPR119|PPARA|KCNQ1|KCNQ2|KCNQ3|KCNMA1,6
+Serotonin receptor agonist,Sumatriptan|Phenyl Biguanide|SR57227A,HTR1A|HTR1B|HTR1D|HTR1F|NA|HTR3A,6
+Anticancer agent,Lenalidomide,CRBN|CUL4A|DDB1|RBX1|TNF,5
+Cytochrome P450 3A inhibitor,Cobicistat (GS-9350),CYP3A4|CYP3A43|CYP3A5|CYP3A7|CYP3A7-CYP3A51P,5
+Hepatocyte growth factor receptor inhibitor,"Cabozantinib|C28H30CIN5O4S|N-(3-Fluoro-4-((7-methoxyquinolin-4-yl)oxy)phenyl)-1-(2-hydroxy-2-methylpropyl)-5-methyl-3-oxo-2-phenyl-2,3-dihydro-1H-pyrazole-4-carboxamide|MK-2461",KDR|MET|NA,5
+IKK inhibitor,BX-795|Withaferin A|IMD-0354,PDK1|PDPK1|IKBKB|NAMPT,5
+PKC inhibitor,Dequalinium|Staurosporine|BIO2_000413,NA|CDK2|GSK3B,5
+PPAR receptor agonist,Oleoylethanolamide|Ciprofibrate|IN1304|MLS001163538,GPR119|PPARA|PPARG,5
+Phospholipase activator,M3M3FBS,PLCB2|PLCB3|PLCD1|PLCG1|PLCG2,5
+Pyruvate dehydrogenase kinase inhibitor,GSK-2334470|BX 912|Dichloroacetic acid,PDK1|PDPK1|NA,5
+Serotonin reuptake inhibitor,Minaprine|Duloxetine,HTR2B|SLC6A4|SLC6A2|SLC6A3,5
+Somatostatin receptor agonist,Somatostatin,SSTR1|SSTR2|SSTR3|SSTR4|SSTR5,5
+Adenosine receptor agonist,AC1NWAUW|N6-Cyclopentyladenosine,PRKACA|ADORA1|ADORA2A|ADORA2B,4
+Androgen receptor antagonist,Enzalutamide|pyrvinium-pamoate|Bicalutamide|Nilutamide,AR,4
+Benzodiazepine receptor agonist,ZK-93423,GABRA1|GABRA2|GABRA3|GABRA5,4
+CLK2 inihibitor,WZ3105,CLK2|CSNK1E|FLT3|ULK1,4
+Cyclin-dependent kinase 1 inhibitor,Dinaciclib,CDK1|CDK2|CDK5|CDK9,4
+Cyclin-dependent kinase 2 inhibitor,Dinaciclib,CDK1|CDK2|CDK5|CDK9,4
+Cyclin-dependent kinase 5 inhibitor,Dinaciclib,CDK1|CDK2|CDK5|CDK9,4
+Cyclin-dependent kinase 9 inhibitor,Dinaciclib,CDK1|CDK2|CDK5|CDK9,4
+DNA topoisomerase II alpha inhibitor,Mitoxantrone|Doxorubicin|Daunorubicin|Valrubicin,TOP2A,4
+Dopamine uptake inhibitor,Diphenylpyraline|Vanoxerine|GBR12935,HRH1|SLC6A3|NA,4
+Estrogen receptor alpha agonist,Estradiol|Mestranol,ESR1|ESR2|NR1I2,4
+Inhibitor of nuclear factor kappa B kinase beta subunit inhibitor,Bardoxolone Methyl,IKBKB|KEAP1|NFE2L2|PPARG,4
+Keap1/Nrf2 inhibitor,Bardoxolone Methyl,IKBKB|KEAP1|NFE2L2|PPARG,4
+Lipoxygenase inhibitor,"BSPBIO_001592|Tremulacin|2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate",PTGS1|PTGS2|NA|ALOX5,4
+Opioid receptor antagonist,SPECTRUM_000051|UNII-BXU45ZH6LI,OPRD1|OPRK1|OPRM1|OPRL1,4
+Peroxisome proliferator-activated receptor gamma antagonist,Bardoxolone Methyl,IKBKB|KEAP1|NFE2L2|PPARG,4
+Progesterone receptor agonist,Levonorgestrel|AC1NSZSY,PGR|CYP17A1|NR3C2,4
+Prostanoid EP1 receptor agonist,Alprostadil,PTGER1|PTGER2,4
+Prostanoid EP2 receptor agonist,Alprostadil,PTGER1|PTGER2,4
+Prostanoid receptor agonist,SCHEMBL10015911|Gamolenic acid|MRE-269,PTGFR|PTGS1|PTGS2|PTGIR,4
+RNA synthesis inhibitor,AC1MJ3VH|Fluorouracil|NCGC00018127-01,TOP2A|DPYD|TYMS,4
+Ribonucleotide reductase inhibitor,Cytarabine,POLA1|POLB|POLD1|POLE,4
+Vascular endothelial growth factor receptor 2 inhibitor,Cabozantinib|CHIR-265,KDR|MET|BRAF,4
+Vitamin D receptor agonist,Paricalcitol|Calcitriol|25-Hydroxycholecalciferol,VDR,4
+Abl kinase inhibitor,Nilotinib,ABL1|BCR|KIT,3
+Acetylcholinesterase inhibitor,Physostigmine|Ursolic acid,ACHE|HSD11B1|PTPN1,3
+Alcohol dehydrogenase inhibitor,Fomepizole,ADH1A|ADH1B|ADH1C,3
+Angiotensin receptor antagonist,Olmesartan Medoxomil|Valsartan|138402-11-6,AGTR1,3
+Casein kinase inhibitor,LY 303511,BRD2|BRD3|BRD4,3
+Caspase inhibitor,Ursolic acid|Ivachtin,HSD11B1|PTPN1|CASP3,3
+D2-like dopamine receptor agonist,Apomorphine,DRD2|DRD3|DRD4,3
+DNA alkylating agent,Cis-Platin|Dacarbazine|SPECTRUM2_000920,XIAP|NA,3
+Endothelin receptor antagonist,BMS-182874|Bosentan,EDNRA|EDNRB,3
+FGFR inhibitor,C19H19FN4O3,FGFR1|FLT1|KDR,3
+G protein coupled receptor agonist,GW9508|Deoxycholic acid,FFAR1|FFAR4|GPBAR1,3
+G protein-coupled receptor agonist,GW9508|Deoxycholic acid,FFAR1|FFAR4|GPBAR1,3
+GABA receptor antagonist,Thiocolchicoside|Securinine,NA|GABRA1,3
+Glucocorticoid receptor antagonist,C29H35NO2,AR|NR3C1|PGR,3
+HMGCR inhibitor,Pitavastatin Calcium|Mevastatin|ZINC21985599,HMGCR,3
+Histone acetyltransferase inhibitor,BSPBIO_001592|STK219801,PTGS1|PTGS2|NA,3
+Hydantoin antiepileptic,Phenytoin,SCN1A|SCN2A|SCN5A,3
+IGF-1 inhibitor,Linsitinib|BMS-536924,IGF1R|INSR,3
+KATP activator,Minoxidil,ABCC9|KCNJ11|KCNJ8,3
+Kir6 channel (KATP) activator,Minoxidil,ABCC9|KCNJ11|KCNJ8,3
+Leukotriene receptor antagonist,Zafirlukast|Tomelukast|Montelukast,CYSLTR1,3
+Lipoprotein lipase activator,Gemfibrozil,CYP2C8|LPL|PPARA,3
+MAP kinase p38 alpha inhibitor,PH-797804|Losmapimod,MAPK14|MAPK11,3
+MCL1 inhibitor,BMS-387032,CDK2|CDK7|CDK9,3
+NADPH inhibitor,2-Acetylphenothiazine|DICUMAROL,NOX1|NQO1|VKORC1,3
+Nitric oxide stimulant,Isosorbide Mononitrate,GUCY1A2|GUCY1A3|GUCY1B3,3
+Norepinephrine reuptake inhibitor,Duloxetine,SLC6A2|SLC6A3|SLC6A4,3
+PARP inhibitor,IWR-1-ENDO|AG 14361,TNKS|TNKS2|PARP1,3
+PKC activator,"Ingenol 3,20-dibenzoate|Phorbol Myristate Acetate",PRKCD|PRKCE|NA,3
+Progesterone receptor antagonist,C29H35NO2,AR|NR3C1|PGR,3
+Protein kinase inhibitor,AC1L1JM9|CHEMBL2132289|Rottlerin,NA|RPS6KA3,3
+RNA polymerase inhibitor,Rifampicin|dactinomycin|Meractinomycin,NR1I2|POLR2A|NA,3
+STAT inhibitor,501919-59-1|Ursolic acid,STAT3|HSD11B1|PTPN1,3
+Serine/threonine-protein kinase AKT inhibitor,Ipatasertib,AKT1|AKT2|AKT3,3
+Succinimide antiepileptic,Phensuximide,CACNA1G|CACNA1H|CACNA1I,3
+TGF beta receptor inhibitor,SB525334|301836-43-1,TGFBR1|CSNK1A1|TGFB1,3
+Vasodilator,Minoxidil,ABCC9|KCNJ11|KCNJ8,3
+Vitamin B,Niacin|AC1O7GPT,HCAR2|HCAR3|NA,3
+11-beta hydroxysteroid dehydrogenase inhibitor,Ursolic acid,HSD11B1|PTPN1,2
+ATP channel blocker,Tolazamide,ABCC8|KCNJ11,2
+Acetylcholine release stimulant,Bifemelane,MAOA|MAOB,2
+Adenosine reuptake inhibitor,Propentofylline|Dilazep,PDE1A|SLC29A1,2
+Bacterial DNA-directed RNA polymerase inhibitor,Rifaximin,NA,2
+Beta-catenin inhibitor,PNU-74654,CTNNB1|TCF4,2
+CAR antagonist,Androstanol,NA,2
+CHK inhibitor,SCHEMBL1564574,CHEK1|CHEK2,2
+Calpain inhibitor,MDL-28170,CAPN1|CTSB,2
+Cannabinoid receptor agonist,Oleoylethanolamide,GPR119|PPARA,2
+Chloride channel blocker,Benzbromarone|Fipronil,NA,2
+Cholinesterase inhibitor,Physostigmine|Pyridostigmine,ACHE,2
+Corticosteroid agonist,Dexamethasone Acetate|SPECTRUM_001092,NR3C1,2
+Cytochrome P450 inhibitor,Dexamethasone Acetate|MLS000877024,NR3C1|NFE2L2,2
+DNA synthesis inhibitor,Cis-Platin|SPECTRUM2_000920,XIAP|NA,2
+DNA topoisomerase II inhibitor,Etoposide,TOP2A|TOP2B,2
+Dihydrofolate reductase inhibitor,Chloroguanide|Amethopterin,NA|DHFR,2
+"Endothelin receptor, ET-A/ET-B antagonist",Macitentan,EDNRA|EDNRB,2
+FOXM1 inhibitor,Thiostrepton,FOXM1,2
+Free Fatty Acid Receptor 1 (FFAR1; GPR40) Agonists,GW9508,FFAR1|FFAR4,2
+Free fatty acid receptor agonist,GW9508,FFAR1|FFAR4,2
+Glucose dependent insulinotropic receptor agonist,Oleoylethanolamide,GPR119|PPARA,2
+Guanylyl cyclase activator,YC1,GUCY1A2|HIF1A,2
+HIV protease inhibitor,Ursolic acid,HSD11B1|PTPN1,2
+Heat shock protein HSP90 inhibitor,Tanespimycin,HSP90AA1|HSP90AB1,2
+Histamine H1 receptor antagonist,Bepotastine Besilate|Clemastine,HRH1,2
+Histone lysine methyltransferase inhibitor,CDK4 Inhibitor III|Chaetocin,CDK4|SUV39H1,2
+Human immunodeficiency virus type 1 reverse transcriptase inhibitor,Etravirine (TMC125)|Emtricitabine,NA,2
+Insulin receptor inhibitor,OSI-906 (Linsitinib),IGF1R|INSR,2
+Insulin-like growth factor I receptor inhibitor,OSI-906 (Linsitinib),IGF1R|INSR,2
+Kelch-like ECH-associated protein ligand,MLS004683642|4L7B,KEAP1,2
+LXR agonist,Hydroxycholesterol,NR1H2|NR1H3,2
+Lipid peroxidase inhibitor,Ursolic acid,HSD11B1|PTPN1,2
+MAP kinase inhibitor,AC1L1JM9|Rottlerin,NA,2
+Muscarinic acetylcholine receptor M2 antagonist,Solifenacin succinate,CHRM2|CHRM3,2
+Muscarinic acetylcholine receptor M3 antagonist,Solifenacin succinate,CHRM2|CHRM3,2
+Muscle relaxant,Mephenesin|Methocarbamol,NA|CA1,2
+NAD precursor with lipid lowering effects,Niacin,HCAR2|HCAR3,2
+Neuronal acetylcholine receptor; alpha4/beta2 agonist,Varenicline Tartrate,CHRNA4|CHRNB2,2
+Nitric oxide production inhibitor,"3,7-Bis(dimethylamino)phenothiazin-5-ium|2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate",ACHE|ALOX5,2
+Nitric oxide synthase inhibitor,Gallocatechin Gallate,BACE1|FASN,2
+Norepinephrine transporter inhibitor,Maprotiline,SLC6A2,2
+PKA inhibitor,H-9|H7,PRKACA|NA,2
+Phospholipase inhibitor,"O-(OCTAHYDRO-1H-4,7-METHANOINDEN-5-YL) HYDROGEN CARBONODITHIOATE|4-(4-Octadecylphenyl)-4-oxobut-2-enoic acid",NA|PLA2G1B,2
+Protein phosphatase inhibitor,BSPBIO_001542,PPP1CA|PPP2CA,2
+Protein synthesis inhibitor,Thiostrepton,FOXM1,2
+SIRT inhibitor,848193-68-0|Splitomicin,SIRT1|NA,2
+SYK inhibitor,BAY 61-3606|SYK Inhibitor,SYK,2
+Serine/threonine kinase inhibitor,2-Aminopurine|CHEMBL2203528,NA,2
+Sigma receptor agonist,PRE-084|Carbetapentane,SIGMAR1|NA,2
+Sodium/potassium/chloride transporter inhibitor,Ethacrynic acid|Bendroflumethiazide,SLC12A1|SLC12A3,2
+Solute carrier family member inhibitor,Bumetanide,SLC12A1|SLC12A2,2
+Steryl sulfatase inhibitor,Ursolic acid,HSD11B1|PTPN1,2
+"Sulfonylurea receptor 1, Kir6.2 blocker",Chlorpropamide,ABCC8|KCNJ11,2
+Synaptic vesicular amine transporter inhibitor,Rescinnamine,ACE|SLC18A2,2
+TNF production inhibitor,"2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate|Roquinimex",ALOX5|NA,2
+TP53 activator,Securinine,GABRA1,2
+TRPV antagonist,AM404|AMG-9810,TRPV1,2
+Thioredoxin inhibitor,PX 12,TXN|TXNRD1,2
+Thymidylate synthase inhibitor,Fluorouracil,DPYD|TYMS,2
+Thyroid peroxidase inhibitor,Propylthiouracil,DIO1|TPO,2
+Tyrosine phosphatase inhibitor,Ursolic acid,HSD11B1|PTPN1,2
+Tyrosine-protein kinase JAK1  inhibitor,Baricitinib,JAK1|JAK2,2
+Tyrosine-protein kinase JAK2 inhibitor,Baricitinib,JAK1|JAK2,2
+Vesicular monoamine transporter inhibitor,Reserpine,SLC18A1|SLC18A2,2
+mTOR inhibitor,"BRD-A25736793|Temsirolimus (CCI-779, NSC 683864)",MTOR,2
+11-beta-HSD1 inhibitor,SPECTRUM_001319,HSD11B1,1
+AMPK activator,IN1541,PRKAA1,1
+ATP channel activator,60559-98-0,KCNJ11,1
+ATP citrase lyase inhibitor,CHEMBL399379,ACLY,1
+Acetylcholine receptor agonist,Epibatidine,NA,1
+Adenosine deaminase inhibitor,Cladribine,ADA,1
+Aldehyde dehydrogenase inhibitor,Disulfiram,ALDH2,1
+Androgen Receptor agonist,testosterone,AR,1
+Androgen Receptor modulator,MK-2866 (GTx-024),AR,1
+Angiogenesis inhibitor,Roquinimex,NA,1
+Angiotensin converting enzyme inhibitor,ENT-Benazepril,ACE,1
+Antiamyloidogenic agent,CHEMBL19130,NA,1
+Antiinfective drug,Benzoxiquine,NA,1
+Antipruritic,Crotamiton,NA,1
+Antiviral,6-Azauridine,NA,1
+Apoptosis regulator Bcl-2 inhibitor,ABT-199 (GDC-0199),BCL2,1
+Aromatase inhibitor,SPECTRUM1505012,CYP19A1,1
+Aromatic L-amino acid decarboxylase inhibitor,"D,L Carbidopa",DDC,1
+Aspartate carbamoyltransferase inhibitor,Pala,CAD,1
+BCL inhibitor,BH3I-1&PRIME;,BCL2L1,1
+Bacterial DNA gyrase inhibitor,Enrofloxacin,NA,1
+Bacterial DNA inhibitor,"1,3(2H,9bh)-Dibenzofurandione, 2,6-diacetyl-7,9-dihydroxy-8,9b-dimethyl-,(9bs)-",NA,1
+Bacterial antifolate,Dapsone,DHFR,1
+Bacterial cell wall synthesis inhibitor,Cefaclor,NA,1
+Bile acid receptor FXR agonist,XL335,NR1H4,1
+Biliverdin reductase A activator,Deoxycholic acid,GPBAR1,1
+CAMP stimulant,AC1NWAUW,PRKACA,1
+CC chemokine receptor antagonist,RS504393,CCR2,1
+CC chemokine receptor ligand,ZK 756326,CCR8,1
+Calcium channel modulator,BRD-A94810754-001-01-2,NA,1
+Cannabinoid CB1 receptor inverse agonist,Taranabant,CNR1,1
+Cannabinoid receptor antagonist,AM 281,CNR1,1
+"Carbamoyl-phosphate synthase [ammonia], mitochondrial positive allosteric modulator",CARGLUMIC ACID,CPS1,1
+Caspase activator,Fcodpguefhccia-Uhfffaoysa-N,CASP3,1
+Cholesterol inhibitor,Glycocholic acid,NA,1
+Cytochrome P450 51 inhibitor,Miconazole,NA,1
+DDR1 inhibitor,CHEMBL3188661,DDR1,1
+DNA alkylating drug,SPECTRUM2_000920,NA,1
+DNA binding agent,CHROMOMYCIN-A3,NA,1
+DNA inhibitor,SPECTRUM2_000920,NA,1
+DNA methyltransferase inhibitor,RG 108,DNMT1,1
+DNA protein kinase inhibitor,PIK 75,PIK3CA,1
+DNA replication inhibitor,Entecavir,NA,1
+Dihydropteroate synthase inhibitor,Sulfadoxine,NA,1
+Dopamine receptor agonist,SKF-77434,DRD1,1
+FAAH inhibitor,AM404,TRPV1,1
+FK506-binding protein 1A inhibitor,Pimecrolimus,FKBP1A,1
+GABA benzodiazepine site receptor inverse agonist,Ethylbeta-carboline-3-carboxylate,NA,1
+GABA gated chloride channel blocker,Fipronil,NA,1
+GK0582 inhibitor,Clofazimine,NA,1
+Gamma secretase inhibitor,BMS-299897,NA,1
+Glycine receptor antagonist,Gelsemine,GLRA3,1
+Guanylyl cyclase inhibitor,"3,7-Bis(dimethylamino)phenothiazin-5-ium",ACHE,1
+HSP inducer,Cobalt (Ii) Chloride,HIF1A,1
+Inactive testosterone analog,Epitestosterone,NA,1
+Indicator dye,Phenolphthalein,NA,1
+Inositol monophosphatase inhibitor,L-690488,IMPA1,1
+Insulin sensitizer,IN1304,PPARG,1
+Ionophore,6-Aminoindazole,NA,1
+JNK inhibitor,CHEMBL585951,MAPK8,1
+Lipase inhibitor,Oxybenzone,NA,1
+Lysophospholipid receptor agonist,CHEMBL1910803,S1PR4,1
+Lysophospholipid receptor antagonist,JTE 013,S1PR2,1
+MDM inhibitor,Rita,MDM2,1
+Melanin inhibitor,Desacetoxymatricarin,NA,1
+Mineralocorticoid receptor agonist,SPECTRUM_001088,NR3C2,1
+Mineralocorticoid receptor antagonist,Spironolactone,NR3C2,1
+Mitochondrial complex I inhibitor,Rotenone,MT-ND1,1
+Monoamine oxidase inhibitor,"3,7-Bis(dimethylamino)phenothiazin-5-ium",ACHE,1
+Motilin receptor agonist,GSK962040,MLNR,1
+Nucleoside reverse transcriptase inhibitor,Didanosine,PNP,1
+Oxidative stress inducer,Elesclomol,HSPA1A,1
+PI3-kinase p110-alpha subunit inhibitor,Alpelisib,PIK3CA,1
+PPAR receptor modulator,"2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate",ALOX5,1
+Platelet aggregation inhibitor,MRE-269,PTGIR,1
+Potassium channel activator,60559-98-0,KCNJ11,1
+Prostanoid FP receptor agonist,TRAVOPROST,PTGFR,1
+Protein kinase activator,SC-10,PRKCA,1
+Purinergic receptor P2Y12 antagonist,Ticlopidine,P2RY12,1
+Radiopaque medium,Ioxaglic acid,NA,1
+Ribonucleoside reductase inhibitor,Cladribine,ADA,1
+Selective serotonin reuptake inhibitor (SSRI),Paroxetine,SLC6A4,1
+Serotonin transporter inhibitor,Fluoxetine,SLC6A4,1
+Smoothened receptor agonist,Purmorphamine,SMO,1
+Smoothened receptor antagonist,Erismodegib,SMO,1
+Sodium/calcium exchange inhibitor,BIO2_000029,NA,1
+Sterol demethylase inhibitor,Tioconazole,NA,1
+Sulfonylurea,Gliquidone,ABCC8,1
+TGF-beta receptor type I inhibitor,LY2157299,TGFBR1,1
+Tachykinin antagonist,FK888,TACR1,1
+Tau aggregation inhibitor,"3,7-Bis(dimethylamino)phenothiazin-5-ium",ACHE,1
+Telomerase inhibitor,MST-312,TERT,1
+Thromboxane receptor antagonist,Vapiprost,TBXA2R,1
+Tripeptidyl peptidase inhibitor,Ala-Ala-Phe-Cmk,TPP2,1
+Tumor necrosis factor production inhibitor,"2-Phenylethyl 3-(3,4-dihydroxyphenyl)prop-2-enoate",ALOX5,1
+Unidentified pharmacological activity,Deoxycholic acid,GPBAR1,1
+Vanilloid receptor antagonist,SB705498,TRPV1,1
+Vasopressin V2 receptor antagonist,Tolvaptan,AVPR2,1
+WNT signaling inhibitor,IWP 2,NA,1
