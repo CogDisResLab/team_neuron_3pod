@@ -27,7 +27,7 @@ process_data <- function(filename) {
         select(gene_name, X, Y, Color, Significant)
 }
 
-genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Neurod2", "Gnai")
+genes_of_interest <- c()
 
 combined_data <- map(deg_files, process_data) |>
     bind_rows(.id = "Comparison") |>
@@ -62,7 +62,7 @@ p <- g +
     ggrepel::geom_text_repel(
         max.overlaps = Inf,
         segment.color = "grey30",
-        box.padding = 1,
+        box.padding = 1L,
         segment.size = 2L,
         min.segment.length = 1L,
         show.legend = FALSE
@@ -70,14 +70,22 @@ p <- g +
     scale_x_continuous(name = expression(log["2"]("FC")), breaks = seq(-10L, 10L, 1L)) +
     scale_y_continuous(name = expression(-log["10"](italic(p) * "-value")), breaks = seq(0L, 10L, 1L)) +
     facet_wrap(facets = "Facet", nrow = 2L, ncol = 2L, axes = "all", dir = "v") +
-    theme_minimal(base_size = 24L) +
+    theme_minimal(base_size = 36L) +
+    guides(colour = guide_legend(override.aes = list(size = 12L))) +
     theme(legend.position = "bottom", legend.box.margin = margin(t = 10L))
 
 p
 
 ggsave("combined_volcano_plots.png",
     bg = "white",
-    height = 8.5 * 2L,
-    width = 11L * 2L,
+    height = 7.5 * 3L,
+    width = 10L * 3L,
+    path = "figures"
+)
+
+ggsave("combined_volcano_plots.svg",
+    bg = "white",
+    height = 7.5 * 3L,
+    width = 10L * 3L,
     path = "figures"
 )
