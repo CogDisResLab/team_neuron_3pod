@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Define genes of interest
-genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Neurod2", "Gnai")
+genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Gnai1")
 
 # Discover files and name them by comparison
 deg_files <- list.files("extdata", pattern = "clean.*\\.csv$") |>
@@ -17,13 +17,14 @@ process_data <- function(filename) {
             Adj.P.Value = p.adjust(P.Value, method = "fdr"),
             logFC = round(logFC, 6L)
         ) |>
-        select(gene_name, logFC, Adj.P.Value) |>
-        filter(gene_name %in% genes_of_interest)
+        select(gene_name, logFC, Adj.P.Value, P.Value)
+    # filter(gene_name %in% genes_of_interest)
 }
 
 # Combine and annotate data
 combined_data <- map(deg_files, process_data) |>
     bind_rows(.id = "Comparison") |>
+    filter(gene_name %in% genes_of_interest) |>
     mutate(
         Group = case_when(
             str_detect(Comparison, fixed("1m")) ~ "1M3M",
@@ -35,8 +36,14 @@ combined_data <- map(deg_files, process_data) |>
         ),
         Comparison = factor(Comparison, levels = c("wt_1m", "wt_3m", "pngf_1m", "pngf_3m")),
         gene_name = factor(gene_name, levels = rev(genes_of_interest)),
-        sig_label = if_else(Adj.P.Value < 0.05, "*", "")
-    )
+        sig_label = if_else(P.Value < 0.05, "*", ""),
+        Status = case_when(
+            logFC > 0L & Adj.P.Value < 0.05 ~ "Up",
+            logFC < 0L & Adj.P.Value < 0.05 ~ "Dn",
+            .default = "NS"
+        )
+    ) |>
+    write_csv(file.path("results", "subset_combined_dges.csv"))
 
 # Two-color palette
 genotype_colors <- c(
@@ -46,11 +53,15 @@ genotype_colors <- c(
 
 # Final plot
 ggplot(combined_data, aes(x = logFC, y = gene_name, fill = Genotype)) +
-    geom_col(position = position_dodge(width = 0.8), width = 0.6, alpha = 0.75, aes(group = Comparison)) +
+    geom_col(
+        position = position_dodge(width = 0.8),
+        width = 0.6, alpha = 0.75, aes(group = Comparison)
+    ) +
     geom_text(
         aes(label = sig_label),
         position = position_dodge(width = 0.8),
-        hjust = -0.2,
+        hjust = -0.5,
+        vjust = -0.5,
         size = 5L,
         color = "black"
     ) +
@@ -67,7 +78,7 @@ ggplot(combined_data, aes(x = logFC, y = gene_name, fill = Genotype)) +
         fill = "Genotype",
         title = "Differential Gene Expression Across Age and Genotype"
     ) +
-    theme_bw(base_size = 16L) + # sets base size for all text elements
+    theme_bw(base_size = 20L) + # sets base size for all text elements
     theme(
         legend.position = "bottom",
         legend.title = element_text(size = 16L, face = "bold"),
@@ -80,3 +91,5 @@ ggplot(combined_data, aes(x = logFC, y = gene_name, fill = Genotype)) +
     )
 
 ggsave("lfc_pyramid_plot.png", width = 11L, height = 8.5, dpi = 300L, path = "figures")
+
+ggsave("lfc_pyramid_plot.svg", width = 11L, height = 8.5, dpi = 300L, path = "figures")

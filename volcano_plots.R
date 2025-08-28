@@ -27,16 +27,23 @@ process_data <- function(filename) {
         select(gene_name, X, Y, Color, Significant)
 }
 
+facet_labels <- c(
+    Y1 = "proNGF 1m vs 3m",
+    Y2 = "proNGF 3m vs 12m",
+    X1 = "Wild Type 1m vs 3m",
+    X2 = "Wild Type 3m vs 12m"
+)
+
 genes_of_interest <- c()
 
 combined_data <- map(deg_files, process_data) |>
     bind_rows(.id = "Comparison") |>
     mutate(
         Facet = case_when(
-            Comparison == "pngf_1m" ~ "proNGF 1m vs 3m",
-            Comparison == "pngf_3m" ~ "proNGF 3m vs 12m",
-            Comparison == "wt_1m" ~ "Wild Type 1m vs 3m",
-            Comparison == "wt_3m" ~ "Wild Type 3m vs 12m",
+            Comparison == "pngf_1m" ~ "Y1",
+            Comparison == "pngf_3m" ~ "Y2",
+            Comparison == "wt_1m" ~ "X1",
+            Comparison == "wt_3m" ~ "X2",
         ),
         Label = if_else(gene_name %in% genes_of_interest, gene_name, NA_character_)
     ) |>
@@ -50,9 +57,9 @@ g <- ggplot(combined_data, aes(
 threshold <- -log10(0.05)
 
 p <- g +
-    geom_hline(yintercept = threshold, lty = "dashed", lwd = 0.25) +
+    geom_hline(yintercept = threshold, lty = "dashed", lwd = 2L) +
     geom_vline(xintercept = c(-1L, 1L), lwd = 0.5, color = "grey") +
-    geom_point() +
+    geom_point(size = 4L) +
     scale_color_manual(
         limits = c("darkred", "black", "darkblue"),
         labels = c("Upregulated", "NS", "Downregulated"),
@@ -68,9 +75,15 @@ p <- g +
         show.legend = FALSE
     ) +
     scale_x_continuous(name = expression(log["2"]("FC")), breaks = seq(-10L, 10L, 1L)) +
-    scale_y_continuous(name = expression(-log["10"](italic(p) * "-value")), breaks = seq(0L, 10L, 1L)) +
-    facet_wrap(facets = "Facet", nrow = 2L, ncol = 2L, axes = "all", dir = "v") +
-    theme_minimal(base_size = 36L) +
+    scale_y_continuous(
+        name = expression(-log["10"](italic(p) * "-value")),
+        breaks = seq(0L, 10L, 1L), limits = c(0L, 3.5)
+    ) +
+    facet_wrap(
+        facets = "Facet", nrow = 2L, ncol = 2L,
+        axes = "all", labeller = labeller(Facet = facet_labels)
+    ) +
+    theme_minimal(base_size = 40L) +
     guides(colour = guide_legend(override.aes = list(size = 12L))) +
     theme(legend.position = "bottom", legend.box.margin = margin(t = 10L))
 
