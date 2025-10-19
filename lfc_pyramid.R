@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Define genes of interest
-genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Gnai1")
+genes_of_interest <- c("Pion", "Kcnab2", "Neurod1", "Gnai1", "Htr2a")
 
 # Discover files and name them by comparison
 deg_files <- list.files("extdata", pattern = "clean.*\\.csv$") |>
