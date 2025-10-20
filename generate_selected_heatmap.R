@@ -37,7 +37,6 @@ ggsave("selected_pathway_heatmap.png",
 )
 
 ggsave("selected_pathway_heatmap.svg",
-    bg = "white",
     width = 7.5 * 3L,
     height = 10L * 3L,
     path = "figures"
